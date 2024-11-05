@@ -68,7 +68,7 @@ export default function Signupcomponent()
                 </div>
                 <div className="pb-16">
                     <button className="bg-slate-400 rounded-[32px] w-full text-white text-[22px] py-4">
-                        Log in
+                        Sign Up
                     </button>
                 </div>
                 <div className="flex items-center justify-center pb-10">
