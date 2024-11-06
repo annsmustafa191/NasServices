@@ -11,7 +11,7 @@ const UserSchema = new mongoose.Schema({
   firstName: String,
   lastName: String,
   phoneNumber: String,
-  companys: [Company], // Array of companies this user (agent) can manage
+  companys: [String], // Array of companies this user (agent) can manage
 });
 
 const User = mongoose.models.User || mongoose.model('User', UserSchema);
