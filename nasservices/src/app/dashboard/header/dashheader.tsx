@@ -1,7 +1,11 @@
-export default function Login() {
+import Image from 'next/image';
+
+export default function Dashheader() {
     return (
-        <div className="flex flex-col justify-center items-center pt-6">
-            <div className="pb-3">
+        <div className="w-full h-[72px] flex flex-row justify-between items-center shadow-lg">
+
+            <div className="pl-8 flex flex-row justify-center items-center gap-2 text-xl font-normal">
+
                 <svg width="96" height="52" viewBox="0 0 96 52" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M52.2564 26C52.2564 40.3594 40.6158 52 26.2563 52C11.8969 52 0.256348 40.3594 0.256348 26C0.256348 11.6406 11.8969 0 26.2563 0C40.6158 0 52.2564 11.6406 52.2564 26Z" fill="url(#paint0_linear_1_435)" />
                     <path d="M6.6167 12.6318C9.46045 12.7334 11.6694 12.7842 13.2437 12.7842C14.8179 12.7842 17.0269 12.7334 19.8706 12.6318C19.9214 12.835 19.9468 12.9746 19.9468 13.0508C19.9468 13.1396 19.9214 13.2983 19.8706 13.5269C19.2866 13.5776 18.8105 13.6348 18.4424 13.6982C18.0869 13.749 17.6426 13.8379 17.1094 13.9648C16.5889 14.0918 16.189 14.2759 15.9097 14.5171C15.6304 14.7456 15.4844 15.0249 15.4717 15.355C15.3066 19.1509 15.2241 22.6865 15.2241 25.9619C16.6333 26.0127 18.7661 26.0381 21.6226 26.0381C23.9585 26.0381 26.3008 26 28.6494 25.9238C28.5986 21.2012 28.5352 17.6782 28.459 15.355C28.4463 15.0249 28.3003 14.7456 28.021 14.5171C27.7417 14.2759 27.3355 14.0918 26.8022 13.9648C26.269 13.8379 25.8184 13.749 25.4502 13.6982C25.0947 13.6348 24.625 13.5776 24.041 13.5269C23.9902 13.2983 23.9648 13.1396 23.9648 13.0508C23.9648 12.9746 23.9902 12.835 24.041 12.6318C26.9102 12.7334 29.1191 12.7842 30.668 12.7842C32.2295 12.7842 34.4448 12.7334 37.314 12.6318C37.3647 12.835 37.3901 12.9746 37.3901 13.0508C37.3901 13.1396 37.3647 13.2983 37.314 13.5269C36.73 13.5776 36.2539 13.6348 35.8857 13.6982C35.5303 13.749 35.0859 13.8379 34.5527 13.9648C34.0195 14.0918 33.6133 14.2759 33.334 14.5171C33.0547 14.7456 32.9087 15.0249 32.896 15.355C32.769 18.5161 32.7056 22.2993 32.7056 26.7046C32.7056 31.0845 32.769 34.855 32.896 38.0161C32.9087 38.3462 33.0547 38.6318 33.334 38.873C33.6133 39.1016 34.0195 39.2793 34.5527 39.4062C35.0859 39.5332 35.5303 39.6284 35.8857 39.6919C36.2539 39.7427 36.73 39.7935 37.314 39.8442C37.3647 40.0474 37.3901 40.2188 37.3901 40.3584C37.3901 40.46 37.3647 40.5869 37.314 40.7393C35.1558 40.6631 32.9404 40.625 30.668 40.625C28.3955 40.625 26.1865 40.6631 24.041 40.7393C23.9902 40.5869 23.9648 40.46 23.9648 40.3584C23.9648 40.1426 23.9902 39.9712 24.041 39.8442C24.625 39.7935 25.1011 39.7427 25.4692 39.6919C25.8374 39.6284 26.2881 39.5332 26.8213 39.4062C27.3545 39.2793 27.7607 39.1016 28.04 38.873C28.3193 38.6318 28.459 38.3462 28.459 38.0161C28.5605 33.4839 28.624 30.0498 28.6494 27.7139C26.3008 27.6377 23.9585 27.5996 21.6226 27.5996C20.1753 27.5996 18.0425 27.625 15.2241 27.6758C15.2241 30.3799 15.2939 33.8267 15.4336 38.0161C15.4463 38.3462 15.5923 38.6318 15.8716 38.873C16.1509 39.1016 16.5508 39.2793 17.0713 39.4062C17.6045 39.5332 18.0488 39.6284 18.4043 39.6919C18.7725 39.7427 19.2485 39.7935 19.8325 39.8442C19.8833 40.0981 19.9087 40.2695 19.9087 40.3584C19.9087 40.46 19.8833 40.5869 19.8325 40.7393C17.6743 40.6631 15.4653 40.625 13.2056 40.625C10.9204 40.625 8.71143 40.6631 6.57861 40.7393C6.52783 40.5869 6.50244 40.46 6.50244 40.3584C6.50244 40.1426 6.52783 39.9712 6.57861 39.8442C7.1626 39.7935 7.63232 39.7427 7.98779 39.6919C8.35596 39.6284 8.80029 39.5332 9.3208 39.4062C9.854 39.2793 10.2603 39.1016 10.5396 38.873C10.8188 38.6318 10.9648 38.3462 10.9775 38.0161C11.1299 34.0425 11.2061 30.0371 11.2061 26C11.2061 21.8867 11.1426 18.3384 11.0156 15.355C11.0029 15.0249 10.8569 14.7456 10.5776 14.5171C10.2983 14.2759 9.89209 14.0918 9.35889 13.9648C8.83838 13.8379 8.39404 13.749 8.02588 13.6982C7.67041 13.6348 7.20068 13.5776 6.6167 13.5269C6.56592 13.2983 6.54053 13.1396 6.54053 13.0508C6.54053 12.9238 6.56592 12.7842 6.6167 12.6318Z" fill="white" />
@@ -33,38 +37,51 @@ export default function Login() {
                         </linearGradient>
                     </defs>
                 </svg>
-
             </div>
-            <p className="text-5xl font-normal text-[#333333] pb-10">Login</p>
 
-            <div className="flex flex-col w-[354px]">
-                <div className="pb-6">
-                    <label className="block mb-2 text-[16px] font-medium text-[#333333]" >
-                        Email Address
-                    </label>
-                    <input type="text" className="block w-full p-4 text-gray-900 border border-gray-300 rounded-lg" />
+            <div className="pr-8 flex flex-row text-2xl font-bold text-[#444658] gap-3">
+
+                <div>
+                    <form className="max-w-md mx-auto">
+                        <label className="mb-2 text-sm font-medium  sr-only dark:text-white">Search</label>
+                        <div className="relative">
+                            <div className="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+                                <svg className="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                                    <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
+                                </svg>
+                            </div>
+                            <input type="search" id="default-search" className="block w-full p-2 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg " placeholder="Search ..." />
+                        </div>
+                    </form>
                 </div>
 
-                <div className="pb-6">
-                    <label className="block mb-2 text-[16px] font-medium text-[#333333]" >
-                        Password
-                    </label>
-                    <input type="password" className="block w-full p-4 text-gray-900 border border-gray-300 rounded-lg" />
-                </div>
-                <div className="pb-32">
-                    <button className="bg-slate-400 rounded-[32px] w-full text-white text-[22px] py-4">
-                        Log in
-                    </button>
-                </div>
-                <div className="flex items-center justify-center pb-10">
-                    <p className="text-center text-[14px] text-[#444658] font-normal w-[277px]">
-                        Secure Login with reCAPTCHA subject to
-                        Google Terms & Privacy
-                    </p>
-                </div>
-            </div>
             
+               
+                <div className="w-[36px] h-[36px] bg-[#E0E6ED] rounded-full flex justify-center items-center">
+
+                    <div className="relative inline-flex">
+                        <Image
+                            src="/header/Frame.png"
+                            alt="My Image"
+                            width={20}
+                            height={20}
+                        />
+                        <span className="absolute top-0.5 right-0.5 grid min-h-[12px] min-w-[12px] translate-x-2/4 -translate-y-2/4 place-items-center rounded-full bg-red-600 py-1 px-1 text-xs text-white"></span>
+                    </div>
+
+                </div>
+                
+                <div className="rounded-full">
+                    <Image
+                        src="/header/user-profile 1.png"
+                        alt="My Image"
+                        width={36}
+                        height={36}
+                    />
+                </div>
+
+            </div>
+
         </div>
     );
-
 }
