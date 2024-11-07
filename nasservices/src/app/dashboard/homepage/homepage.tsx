@@ -81,7 +81,7 @@ export default function Homepage() {
                 {/* Employess Notifications Table Start */}
                 <div className="p-4 rounded-2xl shadow-xl">
 
-                    <div className='flex flex-col'>
+                    <div className='flex flex-col gap-5'>
 
                         <div className='flex justify-between'>
 
@@ -99,7 +99,7 @@ export default function Homepage() {
                                 </div>
                                 <div>
                                     <p>
-                                    Employees’ Notifications
+                                        Employees’ Notifications
                                     </p>
                                 </div>
                                 <div>
@@ -116,7 +116,7 @@ export default function Homepage() {
                                             Created with Pixso.
                                         </desc>
                                         <defs />
-                                        <path id="Vector" d="M5.33 8L6.66 8C7.03 8 7.33 7.7 7.33 7.33C7.33 6.96 7.03 6.66 6.66 6.66L5.33 6.66C4.96 6.66 4.66 6.96 4.66 7.33C4.66 7.7 4.96 8 5.33 8ZM0.66 0C0.29 0 0 0.29 0 0.66C0 1.03 0.29 1.33 0.66 1.33L11.33 1.33C11.7 1.33 12 1.03 12 0.66C12 0.29 11.7 0 11.33 0L0.66 0ZM2.66 4.66L9.33 4.66C9.7 4.66 10 4.36 10 4C10 3.63 9.7 3.33 9.33 3.33L2.66 3.33C2.29 3.33 2 3.63 2 4C2 4.36 2.29 4.66 2.66 4.66Z" fill="#808080" fill-opacity="1.000000" fill-rule="nonzero" />
+                                        <path id="Vector" d="M5.33 8L6.66 8C7.03 8 7.33 7.7 7.33 7.33C7.33 6.96 7.03 6.66 6.66 6.66L5.33 6.66C4.96 6.66 4.66 6.96 4.66 7.33C4.66 7.7 4.96 8 5.33 8ZM0.66 0C0.29 0 0 0.29 0 0.66C0 1.03 0.29 1.33 0.66 1.33L11.33 1.33C11.7 1.33 12 1.03 12 0.66C12 0.29 11.7 0 11.33 0L0.66 0ZM2.66 4.66L9.33 4.66C9.7 4.66 10 4.36 10 4C10 3.63 9.7 3.33 9.33 3.33L2.66 3.33C2.29 3.33 2 3.63 2 4C2 4.36 2.29 4.66 2.66 4.66Z" fill="#808080" fillOpacity="1.000000" fillRule="nonzero" />
                                     </svg>
                                 </button>
                             </div>
@@ -158,49 +158,166 @@ export default function Homepage() {
 
                 {/* Company Notifications Table Start */}
                 <div className="p-4  rounded-2xl shadow-xl">
-                    <div className='flex flex-col'>
+                    <div className='flex flex-col gap-5'>
 
                         <div className='flex justify-between'>
 
-                            <div className='flex flex-row'>
+                            <div className='flex flex-row justify-center items-center gap-3'>
                                 <div>
-                                    Image
+                                    <svg width="40.000000" height="40.000000" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
+                                        <desc>
+                                            Created with Pixso.
+                                        </desc>
+                                        <defs>
+                                            <pattern id="pattern_27_18860" patternContentUnits="objectBoundingBox" width="1.000000" height="1.000000">
+                                                <use xlinkHref="#image27_1886_0" transform="matrix(0.001953,0,0,0.001953,0,0)" />
+                                            </pattern>
+                                            <image id="image27_1886_0" width="512.000000" height="512.000000" xlinkHref="data:image/png;base64,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" />
+                                        </defs>
+                                        <rect id="Frame 40701" rx="19.500000" width="39.000000" height="39.000000" transform="translate(0.500000 0.500000)" fill="#444658" fillOpacity="1.000000" />
+                                        <mask id="mask27_1886" mask-type="alpha" maskUnits="userSpaceOnUse" x="3.200195" y="3.199997" width="33.600098" height="33.600006">
+                                            <rect id="office-building 1" x="3.200195" y="3.199997" width="33.600002" height="33.600002" fill="url(#pattern_27_18860)" fillOpacity="1.000000" />
+                                        </mask>
+                                        <g mask="url(#mask27_1886)">
+                                            <rect id="Rectangle 12" x="3.200195" y="3.199997" width="33.600002" height="33.600002" fill="#FFFFFF" fillOpacity="1.000000" />
+                                        </g>
+                                    </svg>
+
                                 </div>
                                 <div>
                                     <p>
-                                        Heading
+                                        Company’s Notifications
                                     </p>
                                 </div>
                                 <div>
-                                    Icon
+                                    <span className="inline-flex items-center justify-center w-6 h-6 ms-2 text-sm font-semibold text-white bg-red-600 rounded-full">
+                                        2
+                                    </span>
                                 </div>
                             </div>
                             <div>
-                                container 1.1
+                                <button type="button" className="font-medium rounded-full text-sm px-5 py-2.5 text-center inline-flex items-center shadow-md">
+                                    Filters
+                                    <svg width="12.000000" height="8.000000" viewBox="0 0 12 8" fill="none" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
+                                        <desc>
+                                            Created with Pixso.
+                                        </desc>
+                                        <defs />
+                                        <path id="Vector" d="M5.33 8L6.66 8C7.03 8 7.33 7.7 7.33 7.33C7.33 6.96 7.03 6.66 6.66 6.66L5.33 6.66C4.96 6.66 4.66 6.96 4.66 7.33C4.66 7.7 4.96 8 5.33 8ZM0.66 0C0.29 0 0 0.29 0 0.66C0 1.03 0.29 1.33 0.66 1.33L11.33 1.33C11.7 1.33 12 1.03 12 0.66C12 0.29 11.7 0 11.33 0L0.66 0ZM2.66 4.66L9.33 4.66C9.7 4.66 10 4.36 10 4C10 3.63 9.7 3.33 9.33 3.33L2.66 3.33C2.29 3.33 2 3.63 2 4C2 4.36 2.29 4.66 2.66 4.66Z" fill="#808080" fillOpacity="1.000000" fillRule="nonzero" />
+                                    </svg>
+                                </button>
                             </div>
                         </div>
-
+                        {/* table start from here */}
                         <div className="overflow-x-auto">
                             <div className="min-w-full space-y-2">
                                 <div className="flex items-center rounded-full border border-gray-300">
-                                    <div className="px-4 py-2 flex-1">Row 1, Cell 1</div>
-                                    <div className="px-4 py-2 flex-1">Row 1, Cell 2</div>
-                                    <div className="px-4 py-2 flex-1">Row 1, Cell 3</div>
+                                    <div className="px-4 py-2 flex items-center space-x-2 flex-1">
+                                        <svg width="40.000000" height="40.000000" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
+                                            <desc>
+                                                Created with Pixso.
+                                            </desc>
+                                            <defs>
+                                                <pattern id="pattern_27_18860" patternContentUnits="objectBoundingBox" width="1.000000" height="1.000000">
+                                                    <use xlinkHref="#image27_1886_0" transform="matrix(0.001953,0,0,0.001953,0,0)" />
+                                                </pattern>
+                                                <image id="image27_1886_0" width="512.000000" height="512.000000" xlinkHref="data:image/png;base64,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" />
+                                            </defs>
+                                            <rect id="Frame 40701" rx="19.500000" width="39.000000" height="39.000000" transform="translate(0.500000 0.500000)" fill="#444658" fillOpacity="1.000000" />
+                                            <mask id="mask27_1886" mask-type="alpha" maskUnits="userSpaceOnUse" x="3.200195" y="3.199997" width="33.600098" height="33.600006">
+                                                <rect id="office-building 1" x="3.200195" y="3.199997" width="33.600002" height="33.600002" fill="url(#pattern_27_18860)" fillOpacity="1.000000" />
+                                            </mask>
+                                            <g mask="url(#mask27_1886)">
+                                                <rect id="Rectangle 12" x="3.200195" y="3.199997" width="33.600002" height="33.600002" fill="#FFFFFF" fillOpacity="1.000000" />
+                                            </g>
+                                        </svg>
+                                        <span> Gulberg Branch </span>
+                                    </div>
+                                    <div className="px-4 py-2 flex-1">License</div>
+                                    <div className="px-4 py-2 flex-1">
+                                    <span className="bg-yellow-100 text-yellow-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded-full dark:bg-yellow-900 dark:text-yellow-300">Pending</span>
+                                    </div>
                                 </div>
                                 <div className="flex items-center rounded-full border border-gray-300">
-                                    <div className="px-4 py-2 flex-1">Row 2, Cell 1</div>
-                                    <div className="px-4 py-2 flex-1">Row 2, Cell 2</div>
-                                    <div className="px-4 py-2 flex-1">Row 2, Cell 3</div>
+                                    <div className="px-4 py-2 flex items-center space-x-2 flex-1">
+                                        <svg width="40.000000" height="40.000000" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
+                                            <desc>
+                                                Created with Pixso.
+                                            </desc>
+                                            <defs>
+                                                <pattern id="pattern_27_18860" patternContentUnits="objectBoundingBox" width="1.000000" height="1.000000">
+                                                    <use xlinkHref="#image27_1886_0" transform="matrix(0.001953,0,0,0.001953,0,0)" />
+                                                </pattern>
+                                                <image id="image27_1886_0" width="512.000000" height="512.000000" xlinkHref="data:image/png;base64,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" />
+                                            </defs>
+                                            <rect id="Frame 40701" rx="19.500000" width="39.000000" height="39.000000" transform="translate(0.500000 0.500000)" fill="#444658" fillOpacity="1.000000" />
+                                            <mask id="mask27_1886" mask-type="alpha" maskUnits="userSpaceOnUse" x="3.200195" y="3.199997" width="33.600098" height="33.600006">
+                                                <rect id="office-building 1" x="3.200195" y="3.199997" width="33.600002" height="33.600002" fill="url(#pattern_27_18860)" fillOpacity="1.000000" />
+                                            </mask>
+                                            <g mask="url(#mask27_1886)">
+                                                <rect id="Rectangle 12" x="3.200195" y="3.199997" width="33.600002" height="33.600002" fill="#FFFFFF" fillOpacity="1.000000" />
+                                            </g>
+                                        </svg>
+                                        <span> Gulberg Branch </span>
+                                    </div>
+                                    <div className="px-4 py-2 flex-1">License</div>
+                                    <div className="px-4 py-2 flex-1">
+                                    <span className="bg-yellow-100 text-yellow-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded-full dark:bg-yellow-900 dark:text-yellow-300">Pending</span>
+                                    </div>
                                 </div>
                                 <div className="flex items-center rounded-full border border-gray-300">
-                                    <div className="px-4 py-2 flex-1">Row 3, Cell 1</div>
-                                    <div className="px-4 py-2 flex-1">Row 3, Cell 2</div>
-                                    <div className="px-4 py-2 flex-1">Row 3, Cell 3</div>
+                                    <div className="px-4 py-2 flex items-center space-x-2 flex-1">
+                                        <svg width="40.000000" height="40.000000" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
+                                            <desc>
+                                                Created with Pixso.
+                                            </desc>
+                                            <defs>
+                                                <pattern id="pattern_27_18860" patternContentUnits="objectBoundingBox" width="1.000000" height="1.000000">
+                                                    <use xlinkHref="#image27_1886_0" transform="matrix(0.001953,0,0,0.001953,0,0)" />
+                                                </pattern>
+                                                <image id="image27_1886_0" width="512.000000" height="512.000000" xlinkHref="data:image/png;base64,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" />
+                                            </defs>
+                                            <rect id="Frame 40701" rx="19.500000" width="39.000000" height="39.000000" transform="translate(0.500000 0.500000)" fill="#444658" fillOpacity="1.000000" />
+                                            <mask id="mask27_1886" mask-type="alpha" maskUnits="userSpaceOnUse" x="3.200195" y="3.199997" width="33.600098" height="33.600006">
+                                                <rect id="office-building 1" x="3.200195" y="3.199997" width="33.600002" height="33.600002" fill="url(#pattern_27_18860)" fillOpacity="1.000000" />
+                                            </mask>
+                                            <g mask="url(#mask27_1886)">
+                                                <rect id="Rectangle 12" x="3.200195" y="3.199997" width="33.600002" height="33.600002" fill="#FFFFFF" fillOpacity="1.000000" />
+                                            </g>
+                                        </svg>
+                                        <span> Gulberg Branch </span>
+                                    </div>
+                                    <div className="px-4 py-2 flex-1">License</div>
+                                    <div className="px-4 py-2 flex-1">
+                                    <span className="bg-yellow-100 text-yellow-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded-full dark:bg-yellow-900 dark:text-yellow-300">Pending</span>
+                                    </div>
                                 </div>
                                 <div className="flex items-center rounded-full border border-gray-300">
-                                    <div className="px-4 py-2 flex-1">Row 4, Cell 1</div>
-                                    <div className="px-4 py-2 flex-1">Row 4, Cell 2</div>
-                                    <div className="px-4 py-2 flex-1">Row 4, Cell 3</div>
+                                    <div className="px-4 py-2 flex items-center space-x-2 flex-1">
+                                        <svg width="40.000000" height="40.000000" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
+                                            <desc>
+                                                Created with Pixso.
+                                            </desc>
+                                            <defs>
+                                                <pattern id="pattern_27_18860" patternContentUnits="objectBoundingBox" width="1.000000" height="1.000000">
+                                                    <use xlinkHref="#image27_1886_0" transform="matrix(0.001953,0,0,0.001953,0,0)" />
+                                                </pattern>
+                                                <image id="image27_1886_0" width="512.000000" height="512.000000" xlinkHref="data:image/png;base64,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" />
+                                            </defs>
+                                            <rect id="Frame 40701" rx="19.500000" width="39.000000" height="39.000000" transform="translate(0.500000 0.500000)" fill="#444658" fillOpacity="1.000000" />
+                                            <mask id="mask27_1886" mask-type="alpha" maskUnits="userSpaceOnUse" x="3.200195" y="3.199997" width="33.600098" height="33.600006">
+                                                <rect id="office-building 1" x="3.200195" y="3.199997" width="33.600002" height="33.600002" fill="url(#pattern_27_18860)" fillOpacity="1.000000" />
+                                            </mask>
+                                            <g mask="url(#mask27_1886)">
+                                                <rect id="Rectangle 12" x="3.200195" y="3.199997" width="33.600002" height="33.600002" fill="#FFFFFF" fillOpacity="1.000000" />
+                                            </g>
+                                        </svg>
+                                        <span> Gulberg Branch </span>
+                                    </div>
+                                    <div className="px-4 py-2 flex-1">License</div>
+                                    <div className="px-4 py-2 flex-1">
+                                    <span className="bg-yellow-100 text-yellow-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded-full dark:bg-yellow-900 dark:text-yellow-300">Pending</span>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -241,12 +358,12 @@ export default function Homepage() {
                                     <p className='text-[11px] font-normal'> Token: <span className="bg-yellow-100 w-[41px] text-[6px] text-yellow-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded-full dark:bg-yellow-900 dark:text-yellow-300">Yellow</span></p>
                                 </div>
                                 <div>
-                                <Image
-                                    src="/dash-home/Rectangle 571.png"
-                                    alt="My Image"
-                                    width={152}
-                                    height={89}
-                                />
+                                    <Image
+                                        src="/dash-home/Rectangle 571.png"
+                                        alt="My Image"
+                                        width={152}
+                                        height={89}
+                                    />
                                 </div>
                             </div>
 
@@ -261,7 +378,7 @@ export default function Homepage() {
                             </div>
                         </div>
 
-                        
+
 
                     </div>
                 </div>
