@@ -1,6 +1,52 @@
-export default function Signupcomponent()
-{
-    return(
+"use client";
+
+import { useState } from "react";
+
+export default function Signupcomponent() {
+    // Step 1: State variables for form inputs
+    const [email, setEmail] = useState('');
+    const [username, setUsername] = useState('');
+    const [phoneNumber, setPhoneNumber] = useState('');
+    const [password, setPassword] = useState('');
+    const [firstname, setFirstname] = useState('');
+    const [lastname, setLastname] = useState('');
+
+    // Step 2: Handle form submission
+    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+
+        // Step 3: Prepare data object to send
+        const formData = {
+            email,
+            username,
+            phoneNumber,
+            password,
+            firstname,
+            lastname
+        };
+
+        try {
+            // Step 4: Send data to the API
+            const response = await fetch('/api/users/signup', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(formData),
+            });
+
+            const result = await response.json();
+            if (response.ok) {
+                alert('Sign up successful!');
+            } else {
+                alert(`Error: ${result.message}`);
+            }
+        } catch (error) {
+            console.error('Error submitting form', error);
+        }
+    };
+
+    return (
         <div className="flex flex-col justify-center items-center pt-6">
             <div className="pb-3">
                 <svg width="96" height="52" viewBox="0 0 96 52" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -38,47 +84,96 @@ export default function Signupcomponent()
             </div>
             <p className="text-5xl font-normal text-[#333333] pb-10">Sign up</p>
 
-            <div className="flex flex-col w-[354px]">
+            <form onSubmit={handleSubmit} className="flex flex-col w-[354px]">
                 <div className="pb-6">
-                    <label className="block mb-2 text-[16px] font-medium text-[#333333]" >
+                    <label className="block mb-2 text-[16px] font-medium text-[#333333]">
                         Email Address
                     </label>
-                    <input type="text" className="block w-full p-4 text-gray-900 border border-gray-300 rounded-lg" />
+                    <input
+                        type="text"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                        className="block w-full p-4 text-gray-900 border border-gray-300 rounded-lg"
+                    />
                 </div>
 
                 <div className="pb-6">
-                    <label className="block mb-2 text-[16px] font-medium text-[#333333]" >
+                    <label className="block mb-2 text-[16px] font-medium text-[#333333]">
                         Username
                     </label>
-                    <input type="text" className="block w-full p-4 text-gray-900 border border-gray-300 rounded-lg" />
+                    <input
+                        type="text"
+                        value={username}
+                        onChange={(e) => setUsername(e.target.value)}
+                        className="block w-full p-4 text-gray-900 border border-gray-300 rounded-lg"
+                    />
                 </div>
 
                 <div className="pb-6">
-                    <label className="block mb-2 text-[16px] font-medium text-[#333333]" >
+                    <label className="block mb-2 text-[16px] font-medium text-[#333333]">
+                        First Name
+                    </label>
+                    <input
+                        type="text"
+                        value={firstname}
+                        onChange={(e) => setFirstname(e.target.value)}
+                        className="block w-full p-4 text-gray-900 border border-gray-300 rounded-lg"
+                    />
+                </div>
+
+                <div className="pb-6">
+                    <label className="block mb-2 text-[16px] font-medium text-[#333333]">
+                        Last Name
+                    </label>
+                    <input
+                        type="text"
+                        value={lastname}
+                        onChange={(e) => setLastname(e.target.value)}
+                        className="block w-full p-4 text-gray-900 border border-gray-300 rounded-lg"
+                    />
+                </div>
+                
+
+                <div className="pb-6">
+                    <label className="block mb-2 text-[16px] font-medium text-[#333333]">
                         Phone Number
                     </label>
-                    <input type="text" className="block w-full p-4 text-gray-900 border border-gray-300 rounded-lg" />
+                    <input
+                        type="text"
+                        value={phoneNumber}
+                        onChange={(e) => setPhoneNumber(e.target.value)}
+                        className="block w-full p-4 text-gray-900 border border-gray-300 rounded-lg"
+                    />
                 </div>
 
                 <div className="pb-6">
-                    <label className="block mb-2 text-[16px] font-medium text-[#333333]" >
+                    <label className="block mb-2 text-[16px] font-medium text-[#333333]">
                         Password
                     </label>
-                    <input type="password" className="block w-full p-4 text-gray-900 border border-gray-300 rounded-lg" />
+                    <input
+                        type="password"
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                        className="block w-full p-4 text-gray-900 border border-gray-300 rounded-lg"
+                    />
                 </div>
+
                 <div className="pb-16">
-                    <button className="bg-slate-400 rounded-[32px] w-full text-white text-[22px] py-4">
+                    <button
+                        type="submit"
+                        className="bg-slate-400 rounded-[32px] w-full text-white text-[22px] py-4"
+                    >
                         Sign Up
                     </button>
                 </div>
+
                 <div className="flex items-center justify-center pb-10">
                     <p className="text-center text-[14px] text-[#444658] font-normal w-[277px]">
-                        Secure Login with reCAPTCHA subject to
-                        Google Terms & Privacy
+                        Secure Login with reCAPTCHA subject to Google Terms & Privacy
                     </p>
                 </div>
-            </div>
-            
+            </form>
+
         </div>
     );
 }
