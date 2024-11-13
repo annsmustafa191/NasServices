@@ -1,6 +1,5 @@
 // lib/models/User.ts or lib/models/User.js
 import mongoose from 'mongoose';
-import Company from '@lib/models/Company';
 
 const UserSchema = new mongoose.Schema({
   email: String,
