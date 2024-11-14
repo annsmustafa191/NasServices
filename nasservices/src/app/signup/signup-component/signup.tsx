@@ -93,6 +93,7 @@ export default function Signupcomponent() {
                         type="text"
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
+                        required
                         className="block w-full p-4 text-gray-900 border border-gray-300 rounded-lg"
                     />
                 </div>
@@ -105,6 +106,7 @@ export default function Signupcomponent() {
                         type="text"
                         value={username}
                         onChange={(e) => setUsername(e.target.value)}
+                        required
                         className="block w-full p-4 text-gray-900 border border-gray-300 rounded-lg"
                     />
                 </div>
@@ -117,6 +119,7 @@ export default function Signupcomponent() {
                         type="text"
                         value={firstname}
                         onChange={(e) => setFirstname(e.target.value)}
+                        required
                         className="block w-full p-4 text-gray-900 border border-gray-300 rounded-lg"
                     />
                 </div>
@@ -129,6 +132,7 @@ export default function Signupcomponent() {
                         type="text"
                         value={lastname}
                         onChange={(e) => setLastname(e.target.value)}
+                        required
                         className="block w-full p-4 text-gray-900 border border-gray-300 rounded-lg"
                     />
                 </div>
@@ -142,6 +146,7 @@ export default function Signupcomponent() {
                         type="text"
                         value={phoneNumber}
                         onChange={(e) => setPhoneNumber(e.target.value)}
+                        required
                         className="block w-full p-4 text-gray-900 border border-gray-300 rounded-lg"
                     />
                 </div>
@@ -154,6 +159,7 @@ export default function Signupcomponent() {
                         type="password"
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
+                        required
                         className="block w-full p-4 text-gray-900 border border-gray-300 rounded-lg"
                     />
                 </div>

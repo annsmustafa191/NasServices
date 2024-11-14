@@ -1,6 +1,17 @@
+"use client"
+
 import Image from 'next/image';
 
 export default function Dashheader() {
+
+    const handleLogout = () => {
+        // Clear the authToken cookie
+        document.cookie = 'authToken=; Path=/; Expires=Thu, 01 Jan 1970 00:00:00 GMT; Secure';
+
+        // Redirect to login page
+        window.location.href = '/';
+    }
+
     return (
         <div className="w-full h-[72px] flex flex-row justify-between items-center shadow-lg">
 
@@ -79,6 +90,10 @@ export default function Dashheader() {
                         height={36}
                     />
                 </div>
+
+                <button onClick={handleLogout}>
+                    Logout
+                </button>
 
             </div>
 

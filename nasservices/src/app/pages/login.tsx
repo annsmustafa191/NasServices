@@ -1,4 +1,50 @@
+"use client"
+
+import { useState } from "react";
+
+
 export default function Login() {
+
+
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+
+    const handleLogin = async (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+
+        // Step 3: Prepare data object to send
+        const formData = {
+            email,
+            password
+        };
+
+        try {
+            // Step 4: Send data to the API
+            const response = await fetch('/api/users/login', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(formData),
+            });
+
+            const result = await response.json();
+            if (response.ok) {
+                
+                document.cookie = `authToken=${result.Data.token}; Path=/; Secure`; 
+                // Redirect to the dashboard using router.push
+                //router.push('/dashboard'); // This is a client-side navigation to /dashboard
+                window.location.href = '/dashboard';
+
+            } else {
+                alert(`Error: ${result.message}`);
+            }
+        } catch (error) {
+            console.error('Error submitting form', error);
+        }
+
+    }
+
     return (
         <div className="flex flex-col justify-center items-center pt-6">
             <div className="pb-3">
@@ -37,22 +83,30 @@ export default function Login() {
             </div>
             <p className="text-5xl font-normal text-[#333333] pb-10">Login</p>
 
-            <div className="flex flex-col w-[354px]">
+            <form onSubmit={handleLogin} className="flex flex-col w-[354px]">
                 <div className="pb-6">
                     <label className="block mb-2 text-[16px] font-medium text-[#333333]" >
                         Email Address
                     </label>
-                    <input type="text" className="block w-full p-4 text-gray-900 border border-gray-300 rounded-lg" />
+                    <input type="text"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                        required
+                        className="block w-full p-4 text-gray-900 border border-gray-300 rounded-lg" />
                 </div>
 
                 <div className="pb-6">
                     <label className="block mb-2 text-[16px] font-medium text-[#333333]" >
                         Password
                     </label>
-                    <input type="password" className="block w-full p-4 text-gray-900 border border-gray-300 rounded-lg" />
+                    <input type="password"
+                        value={password}
+                        onChange={e => setPassword(e.target.value)}
+                        required
+                        className="block w-full p-4 text-gray-900 border border-gray-300 rounded-lg" />
                 </div>
                 <div className="pb-32">
-                    <button className="bg-slate-400 rounded-[32px] w-full text-white text-[22px] py-4">
+                    <button type="submit" className="bg-slate-400 rounded-[32px] w-full text-white text-[22px] py-4">
                         Log in
                     </button>
                 </div>
@@ -62,7 +116,7 @@ export default function Login() {
                         Google Terms & Privacy
                     </p>
                 </div>
-            </div>
+            </form>
             
         </div>
     );
