@@ -1,6 +1,7 @@
 "use client"
 
 import { useState } from "react";
+import Loader from "../loader/loader";
 
 
 export default function Login() {
@@ -9,8 +10,11 @@ export default function Login() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
+    const [loading, setLoading] = useState(Boolean);
+
     const handleLogin = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
+        setLoading(true)
 
         // Step 3: Prepare data object to send
         const formData = {
@@ -30,13 +34,14 @@ export default function Login() {
 
             const result = await response.json();
             if (response.ok) {
-                
+                setLoading(false)
                 document.cookie = `authToken=${result.Data.token}; Path=/; Secure`; 
                 // Redirect to the dashboard using router.push
                 //router.push('/dashboard'); // This is a client-side navigation to /dashboard
                 window.location.href = '/dashboard';
 
             } else {
+                setLoading(false)
                 alert(`Error: ${result.message}`);
             }
         } catch (error) {
@@ -82,7 +87,9 @@ export default function Login() {
 
             </div>
             <p className="text-5xl font-normal text-[#333333] pb-10">Login</p>
-
+            {loading ? (
+                <Loader />
+            ) : (
             <form onSubmit={handleLogin} className="flex flex-col w-[354px]">
                 <div className="pb-6">
                     <label className="block mb-2 text-[16px] font-medium text-[#333333]" >
@@ -117,7 +124,7 @@ export default function Login() {
                     </p>
                 </div>
             </form>
-            
+            )}
         </div>
     );
 
