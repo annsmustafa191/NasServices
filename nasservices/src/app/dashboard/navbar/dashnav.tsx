@@ -32,7 +32,7 @@ export default function Dashnav() {
                     </Link>
                 </div>
                 <div className="flex items-center">
-                    <Link href="/dashboard/employee" className="flex items-center text-gray-700 no-underline">
+                    <Link href="/dashboard/company" className="flex items-center text-gray-700 no-underline">
                         <svg width="28.000000" height="28.000000" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
                             <desc>
                                 Created with Pixso.

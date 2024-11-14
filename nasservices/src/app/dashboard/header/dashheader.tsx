@@ -7,7 +7,7 @@ export default function Dashheader() {
     const handleLogout = () => {
         // Clear the authToken cookie
         document.cookie = 'authToken=; Path=/; Expires=Thu, 01 Jan 1970 00:00:00 GMT; Secure';
-
+        localStorage.clear();
         // Redirect to login page
         window.location.href = '/';
     }

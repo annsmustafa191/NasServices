@@ -35,9 +35,8 @@ export default function Login() {
             const result = await response.json();
             if (response.ok) {
                 setLoading(false)
-                document.cookie = `authToken=${result.Data.token}; Path=/; Secure`; 
-                // Redirect to the dashboard using router.push
-                //router.push('/dashboard'); // This is a client-side navigation to /dashboard
+                document.cookie = `authToken=${result.Data.token}; Path=/; Secure`;
+                localStorage.setItem('userid', result.Data.user._id); 
                 window.location.href = '/dashboard';
 
             } else {
