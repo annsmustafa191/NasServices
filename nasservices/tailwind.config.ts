@@ -11,6 +11,14 @@ const config: Config = {
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
+        customGrayText: "#444658",
+      },
+      backgroundImage: {
+        customGray:
+        "linear-gradient(216.04deg, rgba(68, 70, 88, 0.76) 13.84%, rgba(68, 70, 88, 0.93) 46.53%, #444658 82.07%)",
+      },
+      boxShadow: {
+        'even-shadow': '0 4px 6px rgba(0, 0, 0, 0.1), 0 -12px 40px rgba(0, 0, 0, 0.1)', 
       },
     },
   },
