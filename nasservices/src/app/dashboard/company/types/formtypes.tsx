@@ -1,11 +1,22 @@
 // types/FormTypes.ts
 export interface CompanyInfoData {
     companyName: string;
+    companyOwnerName: string;
+    comericalRegisterationNumer: string;
+    email: string;
+    country: string;
     companyAddress: string;
+    phoneNumber: string;
+    companylogo: string;
 }
 
 export interface CompanyAttachmentsData {
+    name: string;
+    type: string;
+    expiry: string;
     attachmentUrl: string;
+    reminderName: string;
+    remnderdate: string;
 }
 
 export interface CompanyOwnershipData {
@@ -15,7 +26,7 @@ export interface CompanyOwnershipData {
 
 export interface FormData {
     companyInfo: CompanyInfoData;
-    attachments: CompanyAttachmentsData;
+    documents: CompanyAttachmentsData[];
     ownership: CompanyOwnershipData;
 }
 

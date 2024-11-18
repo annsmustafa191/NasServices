@@ -8,18 +8,17 @@ const FormContext = createContext<FormContextType | undefined>(undefined);
 
 export const FormProvider = ({ children }: { children: ReactNode }) => {
     const [formData, setFormData] = useState<FormData>({
-        companyInfo: { companyName: '', companyAddress: '' },
-        attachments: { attachmentUrl: '' },
+        companyInfo: { companyName: '', companyOwnerName: '' , comericalRegisterationNumer: '' , email: '', country: '', companyAddress: '' , phoneNumber:'', companylogo: '' },
+        documents: [],
         ownership: { ownerName: '', ownerPercentage: 0 }
     });
 
     const updateFormData = (step: keyof FormData, data: Partial<FormData[keyof FormData]>) => {
         setFormData((prev) => ({
             ...prev,
-            [step]: {
-                ...prev[step],
-                ...data
-            }
+            [step]: Array.isArray(prev[step])
+                ? [...(prev[step] as any[]), ...(data as any[])] // Merge arrays
+                : { ...(prev[step] as object), ...data } // Merge objects
         }));
     };
 
