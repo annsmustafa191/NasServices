@@ -31,22 +31,23 @@ export async function GET(req: Request, { params }: { params: { userId: string }
   }
 
   try {
-    // Find all companies where the user is either an owner or an agent
-    const companies = await Company.find({
-      $or: [{ ownerID: userId }, { agentID: userId }],
-    });
-
-    if (companies.length === 0) {
-      return NextResponse.json(
-        formatResponse(404, 'No companies found for this user', null),
-        { status: 404 }
-      );
-    }
-
     return NextResponse.json(
-      formatResponse(200, 'Companies retrieved successfully', companies),
-      { status: 200 }
-    );
+      formatResponse(200, 'Companies retrieved successfully', null),
+      { status: 200 });
+
+    // Find all companies where the user is either an owner or an agent
+    // const companies = await Company.find({
+    //   $or: [{ ownerID: userId }, { agentID: userId }],
+    // });
+
+    // if (companies.length === 0) {
+    //   return NextResponse.json(
+    //     formatResponse(404, 'No companies found for this user', null),
+    //     { status: 404 }
+    //   );
+    
+  // }
+
   } catch (error) {
     return NextResponse.json(
       formatResponse(500, 'Error retrieving companies', { error: error }),

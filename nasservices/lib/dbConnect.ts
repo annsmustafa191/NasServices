@@ -1,14 +1,11 @@
-// lib/dbConnect.ts
-
 import mongoose from 'mongoose';
 
-const MONGODB_URI = process.env.MONGODB_URI as string;
+const MONGODB_URI = process.env.MONGODB_URI as string; //'your-mongodb-connection-string-here';
 
 if (!MONGODB_URI) {
-  throw new Error('Please define the MONGODB_URI environment variable in .env.local');
+  throw new Error('Please define the MONGODB_URI environment variable');
 }
 
-// Use global cache to store the connection across hot reloads in development and across requests in serverless
 let cached = global.mongoose;
 
 if (!cached) {
@@ -21,14 +18,8 @@ async function dbConnect() {
   }
 
   if (!cached.promise) {
-    const opts = {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-      bufferCommands: false,
-    };
-
-    cached.promise = mongoose.connect(MONGODB_URI, opts).then((mongooseInstance) => {
-      return mongooseInstance;
+    cached.promise = mongoose.connect(MONGODB_URI).then((mongoose) => {
+      return mongoose;
     });
   }
 
