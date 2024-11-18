@@ -1,8 +1,6 @@
 import type { Metadata } from "next";
 
 import "./globals.css";
-import Header from "./pages/header";
-
 
 export const metadata: Metadata = {
   title: "NasServices Next App",

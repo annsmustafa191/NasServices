@@ -1,7 +1,7 @@
 "use client"
 
 import { useState } from "react";
-import Loader from "../loader/loader";
+import Loader from "../../loader/loader";
 
 
 export default function Login() {
