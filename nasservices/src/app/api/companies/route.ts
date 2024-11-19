@@ -31,6 +31,6 @@ export async function POST(req: Request) {
       { status: 201 }
     );
   } catch (error) {
-    return NextResponse.json(formatResponse(500, 'Error creatinggg company', error), { status: 500 });
+    return NextResponse.json(formatResponse(500, 'Error creating company', error), { status: 500 });
   }
 }
