@@ -6,12 +6,12 @@ import Company from '@lib/models/Company';
 import { formatResponse } from '@utils/responseFormatter';
 import { verifyToken } from '@utils/verifyToken';
 
-export async function GET(req: Request, { params }: { params: { userId: string } }) {
+export async function GET(req: Request, context: { params: { userId: string } }) {
   await dbConnect();
 
-  const { userId } = params;
+  const { userId } = await context.params;
+  // Check Authorization Header
   const authHeader = req.headers.get('Authorization');
-
   if (!authHeader) {
     return NextResponse.json(
       formatResponse(401, 'Authorization header missing', null),
@@ -19,8 +19,7 @@ export async function GET(req: Request, { params }: { params: { userId: string }
     );
   }
 
-  const token = authHeader.split(' ')[1]; // Expecting "Bearer <token>"
-
+  const token = authHeader.split(' ')[1];
   const { valid, decoded, error } = verifyToken(token);
 
   if (!valid) {
@@ -31,26 +30,25 @@ export async function GET(req: Request, { params }: { params: { userId: string }
   }
 
   try {
+    // Find all companies where the specified userID exists in the ownership list
+    const companies = await Company.find({
+      ownership: { $elemMatch: { userID: userId } }, // Check userID in nested ownership array
+    });
+    if (companies.length === 0) {
+      return NextResponse.json(
+        formatResponse(404, 'No companies found for this user', null),
+        { status: 404 }
+      );
+    }
+
     return NextResponse.json(
-      formatResponse(200, 'Companies retrieved successfully', null),
-      { status: 200 });
-
-    // Find all companies where the user is either an owner or an agent
-    // const companies = await Company.find({
-    //   $or: [{ ownerID: userId }, { agentID: userId }],
-    // });
-
-    // if (companies.length === 0) {
-    //   return NextResponse.json(
-    //     formatResponse(404, 'No companies found for this user', null),
-    //     { status: 404 }
-    //   );
-    
-  // }
-
+      formatResponse(200, 'Companies retrieved successfully', companies),
+      { status: 200 }
+    );
   } catch (error) {
+    console.error('Error retrieving companies:', error);
     return NextResponse.json(
-      formatResponse(500, 'Error retrieving companies', { error: error }),
+      formatResponse(500, 'Error retrieving companies', error),
       { status: 500 }
     );
   }
