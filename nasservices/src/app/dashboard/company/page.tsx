@@ -1,14 +1,8 @@
-// pages/create-company.tsx
+import CompanyListing from "./list/companylisting";
 
-import CreateCompanySteper from "./components/createcompany";
-import { FormProvider } from "./context/formcontext";
-
-
-
-export default function CreateCompanyPage() {
-  return (
-    <FormProvider>
-      <CreateCompanySteper />
-    </FormProvider>
-  );
+export default function CompanyList()
+{
+    return(
+        <CompanyListing />
+    );
 }
