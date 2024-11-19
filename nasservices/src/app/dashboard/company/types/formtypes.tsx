@@ -11,6 +11,7 @@ export interface CompanyInfoData {
 }
 
 export interface CompanyAttachmentsData {
+    id: string;
     name: string;
     type: string;
     expiry: string;
@@ -21,17 +22,22 @@ export interface CompanyAttachmentsData {
 
 export interface CompanyOwnershipData {
     ownerName: string;
-    ownerPercentage: number;
+    usertype: string;
+    userID: string
 }
+
 
 export interface FormData {
     companyInfo: CompanyInfoData;
     documents: CompanyAttachmentsData[];
     ownership: CompanyOwnershipData;
+    employees: [];
+    assets: [];
 }
 
 export interface FormContextType {
     formData: FormData;
     updateFormData: (step: keyof FormData, data: Partial<FormData[keyof FormData]>) => void;
     submitForm: () => Promise<void>;
+    resetFormData: () => void; // Add resetFormData here
 }

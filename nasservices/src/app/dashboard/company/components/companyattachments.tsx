@@ -1,25 +1,32 @@
-// components/companyinfo.tsx
-import {  Box, Button, List, ListItem, IconButton, TextField, Typography } from '@mui/material';
+import { Box, Button, List, ListItem, IconButton, TextField, Typography } from '@mui/material';
 import { useFormContext } from '../context/formcontext';
-import { ChangeEvent, useState } from 'react';
+import { ChangeEvent, useState, useEffect } from 'react';
 
-export default function CompanyAttachments()
-{
+export default function CompanyAttachments() {
     const { formData, updateFormData } = useFormContext();
     const [attachmentDetails, setAttachmentDetails] = useState({
-        name: "",
-        type: "",
-        expiry: "",
-        attachmentUrl: "",
-        reminderName: "",
-        remnderdate: "",
+        id: '', // Unique identifier
+        name: '',
+        type: '',
+        expiry: '',
+        attachmentUrl: '',
+        reminderName: '',
+        remnderdate: '',
     });
 
+    // Log attachmentDetails after state updates
+    useEffect(() => {
+        console.log("Updated Attachment Details --->", attachmentDetails);
+    }, [attachmentDetails]);
+
+    // Handle file upload
     const handleFileUpload = (e: ChangeEvent<HTMLInputElement>) => {
         const file = e.target.files ? e.target.files[0] : null;
+        console.log("Handle FileUpload is called --->", file);
         if (file) {
             setAttachmentDetails((prev) => ({
                 ...prev,
+                id: Date.now().toString(), // Generate unique ID
                 name: file.name,
                 type: file.type,
                 attachmentUrl: URL.createObjectURL(file), // Generate temporary URL for preview
@@ -27,36 +34,60 @@ export default function CompanyAttachments()
         }
     };
 
+    // Add attachment to documents
     const handleAddAttachment = () => {
-        if (attachmentDetails.name && attachmentDetails.type) {
-            updateFormData("documents", [
+        console.log("Form Data Before Adding --->", formData.documents);
+        console.log("Attachment Detail Before Adding --->", attachmentDetails);
+
+        const isDuplicate = formData.documents.some(
+            (doc) =>
+                doc.name === attachmentDetails.name &&
+                doc.type === attachmentDetails.type &&
+                doc.expiry === attachmentDetails.expiry &&
+                doc.reminderName === attachmentDetails.reminderName &&
+                doc.remnderdate === attachmentDetails.remnderdate
+        );
+
+        if (!isDuplicate && attachmentDetails.name && attachmentDetails.type) {
+            updateFormData('documents', [
+                ...formData.documents,
+                { ...attachmentDetails },
+            ]);
+
+            console.log("Form Data After Adding --->", [
                 ...formData.documents,
                 { ...attachmentDetails },
             ]);
 
             // Reset fields after adding the attachment
             setAttachmentDetails({
-                name: "",
-                type: "",
-                expiry: "",
-                attachmentUrl: "",
-                reminderName: "",
-                remnderdate: "",
+                id: '',
+                name: '',
+                type: '',
+                expiry: '',
+                attachmentUrl: '',
+                reminderName: '',
+                remnderdate: '',
             });
+
+            // Reset file input
+            const fileInput = document.querySelector('input[type="file"]') as HTMLInputElement;
+            if (fileInput) fileInput.value = '';
         }
     };
 
+    // Remove attachment by index
     const handleRemoveAttachment = (index: number) => {
         const updatedAttachments = formData.documents.filter((_, i) => i !== index);
-        updateFormData("documents", updatedAttachments);
+        updateFormData('documents', updatedAttachments);
     };
 
-    return(
+    return (
         <Box>
             <Typography variant="h6" gutterBottom>
                 Company Attachments
             </Typography>
-            
+
             {/* File Upload */}
             <Button variant="contained" component="label" sx={{ mb: 2 }}>
                 Upload File
@@ -137,7 +168,7 @@ export default function CompanyAttachments()
             <List sx={{ mt: 4 }}>
                 {formData.documents.map((attachment, index) => (
                     <ListItem
-                        key={index}
+                        key={attachment.id || index} // Use unique ID or index
                         secondaryAction={
                             <IconButton
                                 edge="end"
@@ -159,7 +190,8 @@ export default function CompanyAttachments()
                                 <strong>Expiry:</strong> {attachment.expiry}
                             </Typography>
                             <Typography variant="body2">
-                                <strong>Reminder:</strong> {attachment.reminderName} ({attachment.remnderdate})
+                                <strong>Reminder:</strong> {attachment.reminderName} (
+                                {attachment.remnderdate})
                             </Typography>
                         </Box>
                     </ListItem>

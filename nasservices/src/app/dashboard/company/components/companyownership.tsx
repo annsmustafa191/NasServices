@@ -5,14 +5,13 @@ import { useState } from 'react';
 export default function CompanyOwnership()
 {
     const { formData, updateFormData } = useFormContext();
-    
 
+    
+    
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         updateFormData('ownership', { [e.target.name]: e.target.value });
     };
-
     
-
     return (
         <Box>
             <TextField
@@ -26,12 +25,11 @@ export default function CompanyOwnership()
             />
             <TextField
                 fullWidth
-                label="Ownership Percentage"
-                name="ownerPercentage"
+                label="Ownership Type"
+                name="usertype"
                 variant="outlined"
                 margin="normal"
-                type="number"
-                value={formData.ownership.ownerPercentage}
+                value={formData.ownership.usertype}
                 onChange={handleChange}
             />
         </Box>

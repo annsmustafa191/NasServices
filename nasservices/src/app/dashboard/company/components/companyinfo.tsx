@@ -16,9 +16,6 @@ export default function CompanyInfo() {
         }
     };
 
-    console.log("Company Data " , formData);
-
-
     return (
         <Box>
             <TextField

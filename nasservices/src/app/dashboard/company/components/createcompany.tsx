@@ -7,6 +7,7 @@ import { Box, Button, Stepper, Step, StepLabel, Typography } from '@mui/material
 import CompanyInfo from './companyinfo';
 import CompanyAttachments from './companyattachments';
 import CompanyOwnership from './companyownership';
+import { useFormContext } from '../context/formcontext';
 
 
 
@@ -14,6 +15,8 @@ const steps = ['Company Info', 'Attachments', 'Ownership'];
 
 export default function CreateCompanySteper() {
   const [activeStep, setActiveStep] = useState(0);
+
+  const { submitForm, resetFormData } = useFormContext();
 
   // Function to display the content for each step
   const getStepContent = (step : any) => {
@@ -30,8 +33,19 @@ export default function CreateCompanySteper() {
   };
 
   // Handle navigation to the next step
-  const handleNext = () => {
-    setActiveStep((prevStep) => prevStep + 1);
+  const handleNext = async () => {
+    if (activeStep === steps.length - 1) {
+      // Call the submitForm function from the context
+      const response = await submitForm();
+     
+      if (response == undefined ) {
+        // If API response is okay, reset form data and stepper
+        resetFormData();
+        setActiveStep(0);
+      }
+    } else {
+      setActiveStep((prevStep) => prevStep + 1);
+    }
   };
 
   // Handle navigation to the previous step
