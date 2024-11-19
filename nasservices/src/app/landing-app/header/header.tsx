@@ -1,6 +1,8 @@
 
 "use client";
 import { useState } from "react";
+import Link from 'next/link';
+
 const header =()=>{
     const [dropdownOpen, setDropdownOpen] = useState(false);
     const [currentLang, setCurrentLang] = useState("en");
@@ -56,9 +58,11 @@ const header =()=>{
         </div>
 
         {/* Login Button */}
-        <button className="px-4 py-2 bg-white rounded-md text-customGrayText">
-          {currentLang === "en" ? "Login" : "تسجيل الدخول"}
-        </button>
+          <Link href="/auth">
+            <button className="px-4 py-2 bg-white rounded-md text-customGrayText">
+              {currentLang === "en" ? "Login" : "تسجيل الدخول"}
+            </button>
+          </Link>
       </div>
     </header>
     );
