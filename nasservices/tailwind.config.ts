@@ -19,6 +19,7 @@ const config: Config = {
       },
       boxShadow: {
         'even-shadow': '0 4px 6px rgba(0, 0, 0, 0.1), 0 -12px 40px rgba(0, 0, 0, 0.1)', 
+        top: '0 -4px 6px rgba(0, 0, 0, 0.1)',
       },
     },
   },
