@@ -1,103 +1,52 @@
 "use client";
-import { useState } from "react";
-export default function CompanyListing()
-{const [isOpen, setIsOpen] = useState(false);
+import { useState, useEffect } from 'react';
+import Cookies from 'js-cookie';
 
-    const toggleDropdown = () => {
-      setIsOpen(!isOpen);
-    };
-  const [companies] = useState([
-    {
-      id: 42839,
-      iqama: "NasTecSol",
-      name: "Nassar ibn Ibrahim",
-      position: "Islamabad, Pakistan",
-      location: "+92 23239332",
-      department: "Broadway Complex, 1st floor, Gulberg Greens.",
-     
-    },
-    {
-      id: 34897,
-      iqama: "Nas-HR",
-      name: "Nassar ibn Ibrahimo",
-      position: "Tabuk, Saudi Arabia",
-      location: "+966 8283222",
-      department: "building no 3, tabuk",
-      
-    },
-    {
-        id: 42849,
-        iqama: "NasTecSol",
-        name: "Nassar ibn Ibrahim",
-        position: "Islamabad, Pakistan",
-        location: "+92 23239332",
-        department: "Broadway Complex, 1st floor, Gulberg Greens.",
-       
-      },
-      {
-        id: 34867,
-        iqama: "Nas-HR",
-        name: "Nassar ibn Ibrahimo",
-        position: "Tabuk, Saudi Arabia",
-        location: "+966 8283222",
-        department: "building no 3, tabuk",
-        
-      },
-      {
-        id: 42859,
-        iqama: "NasTecSol",
-        name: "Nassar ibn Ibrahim",
-        position: "Islamabad, Pakistan",
-        location: "+92 23239332",
-        department: "Broadway Complex, 1st floor, Gulberg Greens.",
-       
-      },
-      {
-        id: 34817,
-        iqama: "Nas-HR",
-        name: "Nassar ibn Ibrahimo",
-        position: "Tabuk, Saudi Arabia",
-        location: "+966 8283222",
-        department: "building no 3, tabuk",
-        
-      },
-      {
-        id: 42809,
-        iqama: "NasTecSol",
-        name: "Nassar ibn Ibrahim",
-        position: "Islamabad, Pakistan",
-        location: "+92 23239332",
-        department: "Broadway Complex, 1st floor, Gulberg Greens.",
-       
-      },
-      {
-        id: 34887,
-        iqama: "Nas-HR",
-        name: "Nassar ibn Ibrahimo",
-        position: "Tabuk, Saudi Arabia",
-        location: "+966 8283222",
-        department: "building no 3, tabuk",
-        
-      },
-      {
-        id: 42899,
-        iqama: "NasTecSol",
-        name: "Nassar ibn Ibrahim",
-        position: "Islamabad, Pakistan",
-        location: "+92 23239332",
-        department: "Broadway Complex, 1st floor, Gulberg Greens.",
-       
-      },
-      {
-        id: 31897,
-        iqama: "Nas-HR",
-        name: "Nassar ibn Ibrahimo",
-        position: "Tabuk, Saudi Arabia",
-        location: "+966 8283222",
-        department: "building no 3, tabuk",
-        
-      },
-    ]);
+import Link from 'next/link';
+
+export default function CompanyListing()
+{
+  
+    const [data, setData] = useState<any[] | null>(null);
+
+    useEffect(() => {
+      const fetchData = async () => {
+          try {
+              
+              const userId = localStorage.getItem('userid');
+              if (!userId) {
+                  throw new Error('User ID not found in localStorage');
+              }
+
+              const token = Cookies.get('authToken');
+              if (!token) {
+                  throw new Error('Authorization token not found in cookies');
+              }
+
+              const url = `http://localhost:3000/api/companies/user/${userId}`;
+
+              const response = await fetch(url, {
+                  method: 'GET',
+                  headers: {
+                      'Content-Type': 'application/json',
+                      'Authorization': `Bearer ${token}`, 
+                  },
+              });
+
+              if (!response.ok) {
+                  throw new Error(`HTTP error! Status: ${response.status}`);
+              }
+
+              const result = await response.json();
+              setData(result.Data);
+          } catch (error) {
+              console.log('Error fetching data:', error);
+          }
+      };
+
+      fetchData();
+  }, []);
+
     return(
         <div className="min-h-screen bg-gray-100 p-8">
          <div className=" ml-[-30px] mt-[-31px] w-[104%] bg-white shadow-md rounded-lg  h-[720px] p-4 sm:p-6">
@@ -110,9 +59,11 @@ export default function CompanyListing()
             <button className=" text-[#444658] font-medium px-4 py-2  hover:bg-gray-300 border border-[#444658] rounded-[12px] ">
                 Filters
               </button>
+              <Link href="/dashboard/company/create">
               <button className="bg-[#444658] text-white font-medium px-4 py-2 rounded-[17px] w-[240px]">
                 + Register New Company
               </button>
+              </Link>
             </div>
           </div>
           <div className="overflow-x-auto">
@@ -124,7 +75,7 @@ export default function CompanyListing()
                   CR no.
                   </th>
                   <th className="px-4 py-2 text-left text-gray-600 font-semibold border-b">
-                  Company Namer
+                  Company Name
                   </th>
                   <th className="px-4 py-2 text-left text-gray-600 font-semibold border-b">
                   Owner
@@ -144,24 +95,31 @@ export default function CompanyListing()
                 </tr>
               </thead>
               <tbody>
-                {companies.map((emp) => (
-                  <tr key={emp.id} className="hover:bg-gray-50">
-                    <td className="px-4 py-2 ">{emp.id.toString().padStart(2, "0")}</td>
-                    <td className="px-4 py-2 ">{emp.iqama}</td>
-                    <td className="px-4 py-2  flex items-center space-x-3">
-                      
-                      <span>{emp.name}</span>
+              {data && data.length > 0 ? (
+                data.map((emp: any) => (
+                  <tr key={emp._id} className="hover:bg-gray-50">
+                    <td className="px-4 py-2">{emp.companyInfo.commercialLicenseNumber}</td>
+                    <td className="px-4 py-2">{emp.companyInfo.name}</td>
+                    <td className="px-4 py-2 flex items-center space-x-3">
+                      <span>{emp.ownership[0].userName}</span>
                     </td>
-                    <td className="px-4 py-2 ">{emp.position}</td>
-                    <td className="px-4 py-2 ">{emp.location}</td>
-                    <td className="px-4 py-2 ">{emp.department}</td>
-                    <td className="px-4 py-2 ">
-                      <button className=" text-gray-800 font-medium px-3 py-1 border-b">
-                      View
+                    <td className="px-4 py-2">{emp.companyInfo.country}</td>
+                    <td className="px-4 py-2">{emp.companyInfo.phoneNumber}</td>
+                    <td className="px-4 py-2">{emp.companyInfo.address}</td>
+                    <td className="px-4 py-2">
+                      <button className="text-gray-800 font-medium px-3 py-1 border-b">
+                        View
                       </button>
                     </td>
                   </tr>
-                ))}
+                ))
+              ) : (
+                <tr>
+                  <td colSpan={7} className="px-4 py-2 text-center text-gray-600">
+                    No data available.
+                  </td>
+                </tr>
+              )}
               </tbody>
             </table>
           </div>

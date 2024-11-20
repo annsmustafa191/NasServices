@@ -10,9 +10,9 @@ const FormContext = createContext<FormContextType | undefined>(undefined);
 
 export const FormProvider = ({ children }: { children: ReactNode }) => {
     const [formData, setFormData] = useState<FormData>({
-        companyInfo: { companyName: '', companyOwnerName: '' , comericalRegisterationNumer: '' , email: '', country: '', companyAddress: '' , phoneNumber:'', companylogo: '' },
+        companyInfo: { name: '', companyOwnerName: '' , commercialLicenseNumber: '' , email: '', country: '', address: '' , phoneNumber:'', companyLogo: '' },
         documents: [],
-        ownership: { ownerName: '', usertype: '' , userID: '6731d7648555bd2e5eefd966' },
+        ownership: { userName: '', userType: '' , userID: '6731d7648555bd2e5eefd966' },
         employees: [],
         assets: []
     });
@@ -20,9 +20,9 @@ export const FormProvider = ({ children }: { children: ReactNode }) => {
     const resetFormData = () => {
         setFormData(
             {
-                companyInfo: { companyName: '', companyOwnerName: '' , comericalRegisterationNumer: '' , email: '', country: '', companyAddress: '' , phoneNumber:'', companylogo: '' },
+                companyInfo: { name: '', companyOwnerName: '' , commercialLicenseNumber: '' , email: '', country: '', address: '' , phoneNumber:'', companyLogo: '' },
                 documents: [],
-                ownership: { ownerName: '', usertype: '' , userID: '6731d7648555bd2e5eefd966' },
+                ownership: { userName: '', userType: '' , userID: '6731d7648555bd2e5eefd966' },
                 employees: [],
                 assets: []
             }

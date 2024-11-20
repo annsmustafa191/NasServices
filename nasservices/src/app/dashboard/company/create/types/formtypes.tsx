@@ -1,13 +1,13 @@
 // types/FormTypes.ts
 export interface CompanyInfoData {
-    companyName: string;
+    name: string;
     companyOwnerName: string;
-    comericalRegisterationNumer: string;
+    commercialLicenseNumber: string;
     email: string;
     country: string;
-    companyAddress: string;
+    address: string;
     phoneNumber: string;
-    companylogo: string;
+    companyLogo: string;
 }
 
 export interface CompanyAttachmentsData {
@@ -21,8 +21,8 @@ export interface CompanyAttachmentsData {
 }
 
 export interface CompanyOwnershipData {
-    ownerName: string;
-    usertype: string;
+    userName: string;
+    userType: string;
     userID: string
 }
 

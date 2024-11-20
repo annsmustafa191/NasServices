@@ -12,7 +12,7 @@ export default function CompanyInfo() {
     const handleFileUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
         const file = e.target.files ? e.target.files[0] : null;
         if (file) {
-            updateFormData('companyInfo', { companylogo: file.name }); // Save file name or data
+            updateFormData('companyInfo', { companyLogo: file.name }); // Save file name or data
         }
     };
 
@@ -21,10 +21,10 @@ export default function CompanyInfo() {
             <TextField
                 fullWidth
                 label="Company Name"
-                name="companyName"
+                name="name"
                 variant="outlined"
                 margin="normal"
-                value={formData.companyInfo.companyName}
+                value={formData.companyInfo.name}
                 onChange={handleChange}
                 placeholder="Enter company name"
             />
@@ -41,10 +41,10 @@ export default function CompanyInfo() {
             <TextField
                 fullWidth
                 label="Company Registration Number"
-                name="comericalRegisterationNumer"
+                name="commercialLicenseNumber"
                 variant="outlined"
                 margin="normal"
-                value={formData.companyInfo.comericalRegisterationNumer}
+                value={formData.companyInfo.commercialLicenseNumber}
                 onChange={handleChange}
                 placeholder="Enter company registeration Number"
             />
@@ -71,10 +71,10 @@ export default function CompanyInfo() {
             <TextField
                 fullWidth
                 label="Company Address"
-                name="companyAddress"
+                name="address"
                 variant="outlined"
                 margin="normal"
-                value={formData.companyInfo.companyAddress}
+                value={formData.companyInfo.address}
                 onChange={handleChange}
                 placeholder="Enter company address"
             />
@@ -105,9 +105,9 @@ export default function CompanyInfo() {
                         accept=".pdf,.doc,.docx,.png,.jpg" // Accept specific file types
                     />
                 </Button>
-                {formData.companyInfo.companylogo && (
+                {formData.companyInfo.companyLogo && (
                     <Typography variant="body2" color="textSecondary">
-                        Uploaded: {formData.companyInfo.companylogo}
+                        Uploaded: {formData.companyInfo.companyLogo}
                     </Typography>
                 )}
             </Box>

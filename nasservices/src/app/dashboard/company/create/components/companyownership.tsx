@@ -17,19 +17,19 @@ export default function CompanyOwnership()
             <TextField
                 fullWidth
                 label="Owner Name"
-                name="ownerName"
+                name="userName"
                 variant="outlined"
                 margin="normal"
-                value={formData.ownership.ownerName}
+                value={formData.ownership.userName}
                 onChange={handleChange}
             />
             <TextField
                 fullWidth
                 label="Ownership Type"
-                name="usertype"
+                name="userType"
                 variant="outlined"
                 margin="normal"
-                value={formData.ownership.usertype}
+                value={formData.ownership.userType}
                 onChange={handleChange}
             />
         </Box>
