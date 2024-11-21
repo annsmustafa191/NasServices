@@ -1,5 +1,6 @@
 "use client";
-import { SetStateAction, useState } from "react";
+import { SetStateAction, useEffect, useState } from "react";
+import Cookies from 'js-cookie';
 
 export default function EmployeeList() {
   const [isOpen, setIsOpen] = useState(false);
@@ -8,6 +9,46 @@ export default function EmployeeList() {
   const toggleDropdown = () => {
     setIsOpen(!isOpen);
   };
+
+  const [data, setData] = useState<any[] | null>(null);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+
+        const userId = localStorage.getItem('userid');
+        if (!userId) {
+          throw new Error('User ID not found in localStorage');
+        }
+
+        const token = Cookies.get('authToken');
+        if (!token) {
+          throw new Error('Authorization token not found in cookies');
+        }
+
+        const url = `http://localhost:3000/api/companies/user/${userId}`;
+
+        const response = await fetch(url, {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`,
+          },
+        });
+
+        if (!response.ok) {
+          throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+
+        const result = await response.json();
+        setData(result.Data);
+      } catch (error) {
+        console.log('Error fetching data:', error);
+      }
+    };
+
+    fetchData();
+  }, []);
 
   const handleViewChange = (newView: SetStateAction<string>) => {
     setView(newView);
@@ -33,14 +74,14 @@ export default function EmployeeList() {
       image: "https://i.pravatar.cc/40?img=2",
     },
     {
-        id: 3,
-        iqama: 4000,
-        name: "Lindsey Vetrov",
-        position: "Chief Executive Officer",
-        location: "Head Office",
-        department: "Management",
-        image: "https://i.pravatar.cc/40?img=1",
-      },
+      id: 3,
+      iqama: 4000,
+      name: "Lindsey Vetrov",
+      position: "Chief Executive Officer",
+      location: "Head Office",
+      department: "Management",
+      image: "https://i.pravatar.cc/40?img=1",
+    },
   ]);
 
   const [owners] = useState([
@@ -66,21 +107,19 @@ export default function EmployeeList() {
         <div className="flex flex-col sm:flex-row justify-between items-center mb-4 space-y-4 sm:space-y-0">
           <div className="flex space-x-6">
             <button
-              className={`font-semibold pb-1 ${
-                view === "Employee"
+              className={`font-semibold pb-1 ${view === "Employee"
                   ? "text-[#444658] border-b-2 border-[#444658]"
                   : "text-gray-600"
-              }`}
+                }`}
               onClick={() => handleViewChange("Employee")}
             >
               Employee
             </button>
             <button
-              className={`font-semibold pb-1 ${
-                view === "Owner"
+              className={`font-semibold pb-1 ${view === "Owner"
                   ? "text-[#444658] border-b-2 border-[#444658]"
                   : "text-gray-600"
-              }`}
+                }`}
               onClick={() => handleViewChange("Owner")}
             >
               Owner
@@ -127,60 +166,60 @@ export default function EmployeeList() {
               </tr>
             </thead>
             <tbody>
-  {tableData.map((data) => (
-    <tr key={data.id} className="hover:bg-gray-50">
-      <td className="px-2 sm:px-4 py-2 text-[#444658] font-[300] ">
-        {view === "Employee"
-          ? data.id.toString().padStart(2, "0") 
-          : data.id} 
-      </td>
-      <td className="px-2 sm:px-4 py-2  text-[#444658] font-[300]">
-        {view === "Employee" ? data.iqama : data.iqama} 
-      </td>
-      <td className="px-2 sm:px-4 py-2  flex items-center space-x-3 text-[#444658] font-[300]">
-        <img
-          src={data.image}
-          alt={data.name}
-          className="w-6 h-6 sm:w-8 sm:h-8 rounded-full"
-        />
-        <span className="text-sm sm:text-base">{data.name}</span>
-      </td>
-      <td className="px-2 sm:px-4 py-2  text-sm sm:text-base text-[#444658] font-[300]">
-        {view === "Employee" ? data.position : data.position} 
-      </td>
-      <td className="px-2 sm:px-4 py-2  text-sm sm:text-base text-[#444658] font-[300]">
-        {view === "Employee" ? data.location : data.location}
-      </td>
-    
-      {view === "Employee" && (
-        <>
-          <td className="px-2 sm:px-4 py-2  text-sm sm:text-base text-[#444658] font-[300]">
-            {data.department}
-          </td>
-          <td className="px-2 sm:px-4 py-2 relative">
-  <button
-    className="bg-[#444658] text-[#FFFFFF] font-[600] px-3 rounded h-[28px]"
-    onClick={toggleDropdown}
-  >
-    Action
-  </button>
-  {isOpen && (
-    <div className="absolute top-full  right-0 bg-white border border-gray-200 rounded shadow-lg z-10 w-[80px]">
-      <ul className="text-sm text-gray-700">
-        <li className="px-4 py-2 hover:bg-gray-100 cursor-pointer">View</li>
-        <li className="px-4 py-2 hover:bg-gray-100 cursor-pointer">Update</li>
-        <li className="px-4 py-2 hover:bg-gray-100 cursor-pointer">Delete</li>
-      </ul>
-    </div>
-  )}
-</td>
+              {tableData.map((data) => (
+                <tr key={data.id} className="hover:bg-gray-50">
+                  <td className="px-2 sm:px-4 py-2 text-[#444658] font-[300] ">
+                    {view === "Employee"
+                      ? data.id.toString().padStart(2, "0")
+                      : data.id}
+                  </td>
+                  <td className="px-2 sm:px-4 py-2  text-[#444658] font-[300]">
+                    {view === "Employee" ? data.iqama : data.iqama}
+                  </td>
+                  <td className="px-2 sm:px-4 py-2  flex items-center space-x-3 text-[#444658] font-[300]">
+                    <img
+                      src={data.image}
+                      alt={data.name}
+                      className="w-6 h-6 sm:w-8 sm:h-8 rounded-full"
+                    />
+                    <span className="text-sm sm:text-base">{data.name}</span>
+                  </td>
+                  <td className="px-2 sm:px-4 py-2  text-sm sm:text-base text-[#444658] font-[300]">
+                    {view === "Employee" ? data.position : data.position}
+                  </td>
+                  <td className="px-2 sm:px-4 py-2  text-sm sm:text-base text-[#444658] font-[300]">
+                    {view === "Employee" ? data.location : data.location}
+                  </td>
 
-        </>
-      )}
-      
-    </tr>
-  ))}
-</tbody>
+                  {view === "Employee" && (
+                    <>
+                      <td className="px-2 sm:px-4 py-2  text-sm sm:text-base text-[#444658] font-[300]">
+                        {data.department}
+                      </td>
+                      <td className="px-2 sm:px-4 py-2 relative">
+                        <button
+                          className="bg-[#444658] text-[#FFFFFF] font-[600] px-3 rounded h-[28px]"
+                          onClick={toggleDropdown}
+                        >
+                          Action
+                        </button>
+                        {isOpen && (
+                          <div className="absolute top-full  right-0 bg-white border border-gray-200 rounded shadow-lg z-10 w-[80px]">
+                            <ul className="text-sm text-gray-700">
+                              <li className="px-4 py-2 hover:bg-gray-100 cursor-pointer">View</li>
+                              <li className="px-4 py-2 hover:bg-gray-100 cursor-pointer">Update</li>
+                              <li className="px-4 py-2 hover:bg-gray-100 cursor-pointer">Delete</li>
+                            </ul>
+                          </div>
+                        )}
+                      </td>
+
+                    </>
+                  )}
+
+                </tr>
+              ))}
+            </tbody>
 
           </table>
         </div>
