@@ -2,7 +2,9 @@ import Link from 'next/link';
 
 export default function Dashnav() {
     return (
-        <div className="w-[77px] flex flex-col justify-center items-center h-[655px]">
+        <div className="w-[77px] flex flex-col justify-center items-center h-[239px] mt-[210px] bg-[#ffffff] shadow-[0px_0px_25px_0px_#4446582E] rounded-bottom-right">
+
+
             <div className='shadow-2xl h-[272px] rounded-r-3xl flex flex-col justify-center items-center gap-5'>
                 <div className="flex items-center">
                     <Link href="/dashboard" className="flex items-center text-gray-700 no-underline">
