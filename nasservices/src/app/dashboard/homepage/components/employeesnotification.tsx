@@ -48,29 +48,36 @@ export default function EmployeesNotification(props : any) {
                         <table className="min-w-full">
                             <tbody className="divide-y divide-gray-200">
                                 <tr>
-                                    <td className="px-4 py-2"><button type="button" className="text-white bg-blue-700 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Default</button></td>
-                                    <td className="px-4 py-2">Arqum Satti</td>
-                                    <td className="px-4 py-2">Passport Expiry</td>
-                                    <td className="px-4 py-2">15 Days Left</td>
+                                    <td className="px-4 py-2"><button type="button" className="bg-[#D9ECEC] ml-[4px] text-[#2D9596] text-xs font-medium me-2 px-2.5 py-0.5 rounded-full">Renewal</button></td>
+                                    <td className="px-4 py-2 text-[#444658]">Arqum Satti</td>
+                                    <td className="px-4 py-2 text-[#444658]">Passport Expiry</td>
+                                    <td className="px-4 py-2 text-[#444658]">15 Days Left</td>
                                 </tr>
                                 <tr>
-                                    <td className="px-4 py-2"><button type="button" className="text-white bg-blue-700 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Default</button></td>
-                                    <td className="px-4 py-2">Arqum Satti</td>
-                                    <td className="px-4 py-2">Passport Expiry</td>
-                                    <td className="px-4 py-2">15 Days Left</td>
+                                    <td className="px-4 py-2"><button type="button" className="bg-[#D9ECEC] ml-[4px] text-[#2D9596] text-xs font-medium me-2 px-2.5 py-0.5 rounded-full">Renewal</button></td>
+                                    <td className="px-4 py-2 text-[#444658]">Hamza Akram</td>
+                                    <td className="px-4 py-2 text-[#444658]">Visa Expiry</td>
+                                    <td className="px-4 py-2 text-[#444658]">10 Days Left</td>
                                 </tr>
                                 <tr>
-                                    <td className="px-4 py-2"><button type="button" className="text-white bg-blue-700 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Default</button></td>
-                                    <td className="px-4 py-2">Arqum Satti</td>
-                                    <td className="px-4 py-2">Passport Expiry</td>
-                                    <td className="px-4 py-2">15 Days Left</td>
+                                    <td className="px-4 py-2 text-[#444658]"><button type="button" className="bg-[#D9ECEC] ml-[4px] text-[#2D9596] text-xs font-medium me-2 px-2.5 py-0.5 rounded-full">Renewal</button></td>
+                                    <td className="px-4 py-2 text-[#444658]">Suleman Khan</td>
+                                    <td className="px-4 py-2 text-[#444658]">Insurance Expiry</td>
+                                    <td className="px-4 py-2 text-[#444658]">15 Days Left</td>
                                 </tr>
                                 <tr>
-                                    <td className="px-4 py-2"><button type="button" className="text-white bg-blue-700 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Default</button></td>
-                                    <td className="px-4 py-2">Arqum Satti</td>
-                                    <td className="px-4 py-2">Passport Expiry</td>
-                                    <td className="px-4 py-2">15 Days Left</td>
+                                    <td className="px-4 py-2 text-[#444658]"><button type="button" className="bg-[#D9ECEC] ml-[4px] text-[#2D9596] text-xs font-medium me-2 px-2.5 py-0.5 rounded-full">Renewal</button></td>
+                                    <td className="px-4 py-2 text-[#444658]">Shoaib Sardar</td>
+                                    <td className="px-4 py-2 text-[#444658]">Iqama Expiry</td>
+                                    <td className="px-4 py-2 text-[#444658]">4 Days Left</td>
                                 </tr>
+                                <tr>
+                                    <td className="px-4 py-2 text-[#444658]"><button type="button" className="bg-[#D9ECEC] ml-[4px] text-[#2D9596] text-xs font-medium me-2 px-2.5 py-0.5 rounded-full">Renewal</button></td>
+                                    <td className="px-4 py-2 text-[#444658]">Ammad</td>
+                                    <td className="px-4 py-2 text-[#444658]">Loan Expiry</td>
+                                    <td className="px-4 py-2 text-[#444658]">9 Days Left</td>
+                                </tr>
+                                
                             </tbody>
                         </table>
                     </div>
