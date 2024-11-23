@@ -1,5 +1,5 @@
 // components/companyinfo.tsx
-import { Button, Box, TextField, Typography } from '@mui/material';
+import { Button, Box, TextField, Typography, colors } from '@mui/material';
 import { useFormContext } from '../context/formcontext';
 
 export default function CompanyInfo() {
@@ -17,8 +17,15 @@ export default function CompanyInfo() {
     };
 
     return (
-        <Box>
-            <TextField
+        <Box sx={{ p: 3, bgcolor: 'background.paper', borderRadius: 2 }}>
+            <Box sx={{color:'#444658',fontSize:"21px",fontWeight:'600',marginLeft:'-410px',marginTop:'-150px',marginBottom:'90px'}}>
+            Register new company
+        
+            </Box>
+            <Typography sx={{marginLeft:'-400px'}}>
+                Company Name *
+            </Typography>
+            <TextField            
                 fullWidth
                 label="Company Name"
                 name="name"
@@ -27,18 +34,9 @@ export default function CompanyInfo() {
                 value={formData.companyInfo.name}
                 onChange={handleChange}
                 placeholder="Enter company name"
+                sx={{width:'40%', marginLeft:'-400px',color:'#444658',  borderRadius: '50px','& .MuiOutlinedInput-root': { borderRadius: '50px',},}}
             />
-            <TextField
-                fullWidth
-                label="Company Owner Name"
-                name="companyOwnerName"
-                variant="outlined"
-                margin="normal"
-                value={formData.companyInfo.companyOwnerName}
-                onChange={handleChange}
-                placeholder="Enter company owner name"
-            />
-            <TextField
+           <TextField
                 fullWidth
                 label="Company Registration Number"
                 name="commercialLicenseNumber"
@@ -47,7 +45,56 @@ export default function CompanyInfo() {
                 value={formData.companyInfo.commercialLicenseNumber}
                 onChange={handleChange}
                 placeholder="Enter company registeration Number"
-            />
+                sx={{ width: '40%',marginLeft:'40px', borderRadius: '50px', '& .MuiOutlinedInput-root': { borderRadius: '50px'},}}/>
+              <Box
+               sx={{display: 'flex',alignItems: 'center',gap: 4,}}>
+    <TextField
+        fullWidth
+        label="Country / City"
+        name="country"
+        variant="outlined"
+        margin="normal"
+        value={formData.companyInfo.country}
+        onChange={handleChange}
+        placeholder="Enter Country/City Name"
+        sx={{
+           marginLeft:'-400px', width: '40%', borderRadius: '50px', '& .MuiOutlinedInput-root': { borderRadius: '50px',},
+        }}
+    />
+    <TextField
+        fullWidth
+        label="Company Address"
+        name="address"
+        variant="outlined"
+        margin="normal"
+        value={formData.companyInfo.address}
+        onChange={handleChange}
+        placeholder="Enter company address"
+        sx={{
+            marginLeft:'10px',width: '40%', borderRadius: '50px', '& .MuiOutlinedInput-root': { borderRadius: '50px',},
+        }}
+    />
+    <TextField
+        fullWidth
+        label="Company Phone Number"
+        name="phoneNumber"
+        variant="outlined"
+        margin="normal"
+        value={formData.companyInfo.phoneNumber}
+        onChange={handleChange}
+        placeholder="Enter company phone number"
+        sx={{ width: '40%', borderRadius: '50px', '& .MuiOutlinedInput-root': { borderRadius: '50px'},}}/>
+</Box>
+<TextField
+                fullWidth
+                label="Company Registration Number"
+                name="commercialLicenseNumber"
+                variant="outlined"
+                margin="normal"
+                value={formData.companyInfo.commercialLicenseNumber}
+                onChange={handleChange}
+                placeholder="Enter company registeration Number"
+                sx={{ width: '40%',marginLeft:'-400px', borderRadius: '50px', '& .MuiOutlinedInput-root': { borderRadius: '50px'},}}/>
             <TextField
                 fullWidth
                 label="Company Email"
@@ -57,59 +104,68 @@ export default function CompanyInfo() {
                 value={formData.companyInfo.email}
                 onChange={handleChange}
                 placeholder="Enter company email"
-            />
-            <TextField
-                fullWidth
-                label="Country / City"
-                name="country"
-                variant="outlined"
-                margin="normal"
-                value={formData.companyInfo.country}
-                onChange={handleChange}
-                placeholder="Enter Country/City Name"
-            />
-            <TextField
-                fullWidth
-                label="Company Address"
-                name="address"
-                variant="outlined"
-                margin="normal"
-                value={formData.companyInfo.address}
-                onChange={handleChange}
-                placeholder="Enter company address"
-            />
-            <TextField
-                fullWidth
-                label="Company phoneNumber"
-                name="phoneNumber"
-                variant="outlined"
-                margin="normal"
-                value={formData.companyInfo.phoneNumber}
-                onChange={handleChange}
-                placeholder="Enter company phoneNumber"
-            />
+                sx={{ width: '40%', borderRadius: '50px',marginLeft:'40px', '& .MuiOutlinedInput-root': { borderRadius: '50px'},}}/>
+
             <Box mt={2}>
-                <Typography variant="body1" gutterBottom>
-                    Upload Company Logo
+                <Typography variant="body1" gutterBottom sx={{marginLeft:'-390px',color:'#444658'}}>
+                    
+                    Add Company Logo
                 </Typography>
-                <Button
-                    variant="contained"
-                    component="label"
-                    sx={{ display: 'block', marginBottom: '16px' }}
-                >
-                    Upload File
-                    <input
-                        type="file"
-                        hidden
-                        onChange={handleFileUpload}
-                        accept=".pdf,.doc,.docx,.png,.jpg" // Accept specific file types
-                    />
-                </Button>
-                {formData.companyInfo.companyLogo && (
-                    <Typography variant="body2" color="textSecondary">
-                        Uploaded: {formData.companyInfo.companyLogo}
-                    </Typography>
-                )}
+                <Box
+    sx={{
+        display: 'flex',
+        alignItems: 'center', // Vertically align items
+      
+    }}
+>
+<Button
+    variant="contained"
+    component="label"
+    sx={{
+        display: 'flex',
+        background: '#ffffff',
+        color: '#444658',
+        width: '55%',
+        borderRadius: '50px',
+        marginLeft: '-400px',
+        gap: 1,
+    }}
+>
+    <img src="/company/file.png" alt="choose file" width={20} height={20} />
+    Choose File
+    <input
+        type="file"
+        hidden
+        onChange={handleFileUpload}
+        accept=".pdf,.doc,.docx,.png,.jpg" // Accept specific file types
+    />
+    {formData.companyInfo.companyLogo ? (
+        <Typography
+            variant="body2"
+            sx={{
+                marginLeft: 2,
+                color: '#444658',
+            }}
+        >
+            Uploaded: {formData.companyInfo.companyLogo}
+        </Typography>
+    ) : (
+        <Typography
+            variant="body2"
+            sx={{
+                marginLeft: 2,
+                color: '#888',
+            }}
+        >
+            | No file chosen
+        </Typography>
+    )}
+</Button>
+
+    
+</Box>
+
+               
             </Box>
         </Box>
     );
