@@ -70,17 +70,18 @@ export default function CreateCompanySteper() {
         ) : (
           <>
             {getStepContent(activeStep)}
-            <Box sx={{ display: 'flex', flexDirection: 'row', pt: 2 }}>
+            <Box sx={{ position:'fixed',display: 'flex', flexDirection: 'row', alignContent:'center',marginTop:'80px',gap:'10px'}}>
               <Button
                 color="inherit"
                 disabled={activeStep === 0}
                 onClick={handleBack}
-                sx={{ mr: 1 }}
-              >
+                sx={{ marginLeft:'140px',border:'1px solid',borderRadius:'12px',color:'#444658',background:'#ffffff'}}
+               >
                 Back
               </Button>
-              <Box sx={{ flex: '1 1 auto' }} />
-              <Button onClick={handleNext}>
+              
+              <Button onClick={handleNext}
+              sx={{ border:'1px solid',borderRadius:'12px',background:'#444658',color:'white',marginLeft:'-40px!importnart'}}>
                 {activeStep === steps.length - 1 ? 'Finish' : 'Next'}
               </Button>
             </Box>

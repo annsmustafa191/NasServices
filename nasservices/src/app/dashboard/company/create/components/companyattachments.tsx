@@ -84,29 +84,35 @@ export default function CompanyAttachments() {
 
     return (
         <Box>
-            <Typography variant="h6" gutterBottom>
-                Company Attachments
-            </Typography>
-
-            {/* File Upload */}
-            <Button variant="contained" component="label" sx={{ mb: 2 }}>
-                Upload File
-                <input
-                    type="file"
-                    hidden
-                    onChange={handleFileUpload}
-                    accept=".pdf,.doc,.docx,.png,.jpg"
+             <Box sx={{color:'#444658',fontSize:"21px",fontWeight:'600',marginLeft:'-390px',marginTop:'-110px',marginBottom:'90px'}}>
+            Register new company
+            </Box>
+          <Box sx={{ mt: 2, }}>
+            <Box sx={{display:'flex',flexDirection:'row',marginLeft:'-380px',gap:'40px'}}>
+            <TextField
+                    label=" Name"
+                    fullWidth
+                    value={attachmentDetails.reminderName}
+                    onChange={(e) =>
+                        setAttachmentDetails((prev) => ({
+                            ...prev,
+                            reminderName: e.target.value,
+                        }))
+                    }
+                    sx={{ mb: 2 ,width:'22%',  borderRadius: '50px','& .MuiOutlinedInput-root': { borderRadius: '50px'}, }}
                 />
-            </Button>
-
-            {attachmentDetails.attachmentUrl && (
-                <Typography variant="body2" color="textSecondary">
-                    Selected File: {attachmentDetails.name} ({attachmentDetails.type})
-                </Typography>
-            )}
-
-            {/* Metadata Fields */}
-            <Box sx={{ mt: 2 }}>
+                   <TextField
+                    label="Type"
+                    fullWidth
+                    value={attachmentDetails.reminderName}
+                    onChange={(e) =>
+                        setAttachmentDetails((prev) => ({
+                            ...prev,
+                            reminderName: e.target.value,
+                        }))
+                    }
+                    sx={{ mb: 2 ,width:'22%',  borderRadius: '50px','& .MuiOutlinedInput-root': { borderRadius: '50px'}, }}
+                />
                 <TextField
                     label="Expiry Date"
                     type="date"
@@ -119,8 +125,26 @@ export default function CompanyAttachments() {
                             expiry: e.target.value,
                         }))
                     }
-                    sx={{ mb: 2 }}
+                    sx={{ mb: 2, width:'22%', borderRadius: '50px','& .MuiOutlinedInput-root': { borderRadius: '50px',}, }}
                 />
+                 </Box>
+               
+              <Box sx={{display:'flex',flexDirection:'row',marginLeft:'-380px',gap:'40px',marginTop:'15px'}}>
+            {/* File Upload */}
+            <Button variant="contained" component="label" sx={{ mb: 2,padding:'-5px',width:'22%',gap:'9px', height:'54px',color:'#444658',background:'#ffffff', borderRadius: '50px','& .MuiOutlinedInput-root': { borderRadius: '50px',}, }}>
+           
+            <img src="/company/file.png" alt="choose file" width={20} height={20} />
+                Upload File
+                <input
+                    type="file"
+                    hidden
+                    onChange={handleFileUpload}
+                    accept=".pdf,.doc,.docx,.png,.jpg"
+                />
+                 
+            </Button>
+            
+           
                 <TextField
                     label="Reminder Name"
                     fullWidth
@@ -131,7 +155,7 @@ export default function CompanyAttachments() {
                             reminderName: e.target.value,
                         }))
                     }
-                    sx={{ mb: 2 }}
+                    sx={{ mb: 2 ,width:'22%',  borderRadius: '50px','& .MuiOutlinedInput-root': { borderRadius: '50px'}, }}
                 />
                 <TextField
                     label="Reminder Date"
@@ -145,11 +169,13 @@ export default function CompanyAttachments() {
                             remnderdate: e.target.value,
                         }))
                     }
-                    sx={{ mb: 2 }}
+                    sx={{ mb: 2 ,width:'22%',  borderRadius: '50px','& .MuiOutlinedInput-root': { borderRadius: '50px'},}}
                 />
-                <Button
+                </Box>
+                <Button sx={{marginLeft:'-380px',marginTop:'20px', width:'35%',height:'50px',background:'#444658',color:'white',borderRadius: '50px','& .MuiOutlinedInput-root': { borderRadius: '50px'},}}
                     variant="contained"
                     color="primary"
+                    
                     onClick={handleAddAttachment}
                     disabled={
                         !attachmentDetails.name ||
@@ -170,16 +196,16 @@ export default function CompanyAttachments() {
                     <ListItem
                         key={attachment.id || index} // Use unique ID or index
                         secondaryAction={
-                            <IconButton
-                                edge="end"
+                            <IconButton sx={{color:'white',marginLeft:'-750px',background:'#E52C42', borderRadius:'17px',fontSize:'14px',height:'25px'}}
+                               
                                 aria-label="delete"
                                 onClick={() => handleRemoveAttachment(index)}
-                            >
-                                {/* <DeleteIcon /> */}
+                            > 
+                                Remove
                             </IconButton>
                         }
                     >
-                        <Box>
+                        <Box sx={{marginLeft:'-400px',marginTop:'-10px',border:'1px solid #B6B6B6',width:'40%', borderRadius:'16px',boxShadow:'0px 2px 4px 0px #00000040'}}>
                             <Typography variant="body2">
                                 <strong>Name:</strong> {attachment.name}
                             </Typography>
