@@ -1,5 +1,12 @@
+import { useState } from "react";
+
 export default function ProfessionalInfo()
-{
+{ 
+    const [fileName, setFileName] = useState("");
+    const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        const file = event.target.files?.[0];
+        console.log(file?.name);
+      };
     return(
       <div className="flex flex-col ml-4">
         <div className="flex flex-row  ml-[-400px] ">
@@ -47,14 +54,22 @@ export default function ProfessionalInfo()
             </div>  
         </div>
         <div className="text-[#444658] w-[200px] mt-6 ml-[-405px]"  >
-               Work Background <span className="text-red-500">*</span>
-            </div>
-            <div className="flex mt-3 ml-[-405px]">
-                     <input
-                     type="text"
-                     placeholder="Select"
-                      className="w-[373px] px-4 py-2 border rounded-full text-gray-600 placeholder-gray-400 focus:outline-[#444658] "
-                      ></input>
+        <label htmlFor="file-upload" className="text-[#444658] size-[16px] mt-[18px] mb-[8px]">
+                      Work Background<span className="text-red-500">*</span>
+                    </label>
+                      <div className="mt-[14px] w-[375px] px-4 py-2 border rounded-full text-gray-600 placeholder-gray-400 focus:[#444658]">
+                           <label
+                            
+                            className="cursor-pointer">
+                          </label>
+                         <input
+                       id="file-upload"
+                        type="file"
+                       accept="image/*"
+                         onChange={handleFileChange} />                     
+                       {fileName }
+              </div>
+           
             </div>
       </div>
     );
