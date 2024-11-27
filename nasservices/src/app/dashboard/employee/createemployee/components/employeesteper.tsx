@@ -62,7 +62,7 @@ export default function EmployeeSteper() {
   };
 
   return (
-    <Box sx={{ width: '100%', maxWidth: 600, mx: 'auto', mt: 5 }}>
+    <Box sx={{ width: '100%', maxWidth: 600, mx: 'auto', mt: 5,  color:'#444658'}}>
       <Stepper activeStep={activeStep} alternativeLabel>
         {steps.map((label) => (
           <Step key={label}>
@@ -78,17 +78,18 @@ export default function EmployeeSteper() {
         ) : (
           <>
             {getStepContent(activeStep)}
-            <Box sx={{ display: 'flex', flexDirection: 'row', pt: 2 }}>
+            <Box sx={{ position:'fixed',display: 'flex', flexDirection: 'row', alignContent:'center',marginTop:'70px',gap:'10px'}}>
               <Button
                 color="inherit"
                 disabled={activeStep === 0}
                 onClick={handleBack}
-                sx={{ mr: 1 }}
-              >
+                sx={{ marginLeft:'140px',border:'1px solid',borderRadius:'12px',color:'#444658',background:'#ffffff'}}
+               >
                 Back
               </Button>
-              <Box sx={{ flex: '1 1 auto' }} />
-              <Button onClick={handleNext}>
+              
+              <Button onClick={handleNext}
+              sx={{ border:'1px solid',borderRadius:'12px',background:'#444658',color:'white',marginLeft:'-40px!importnart'}}>
                 {activeStep === steps.length - 1 ? 'Finish' : 'Next'}
               </Button>
             </Box>

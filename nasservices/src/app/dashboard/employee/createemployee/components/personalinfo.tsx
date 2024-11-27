@@ -69,7 +69,7 @@ export default function PersonalInfo()
             </div>
              <div className="flex mt-[14px] ml-[-6px] gap-5 ">
                 <input
-                type="text"
+                type="date"
                  placeholder="Muslim"
                  className="w-[290px] px-4 py-2 border rounded-full text-gray-600 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500"
                ></input>
@@ -81,7 +81,7 @@ export default function PersonalInfo()
                 </div>
                 <div className="flex mt-[14px] ml-[6px] gap-5 ">
                     <input
-                     type="text"
+                     type="date"
                      
                       className="w-[207px] px-4 py-2 border rounded-full text-gray-600 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500"
                       ></input>
@@ -93,7 +93,7 @@ export default function PersonalInfo()
                 </div>
                 <div className="flex mt-[14px] ml-[6px] gap-5 ">
                     <input
-                     type="text"
+                     type="date"
                      
                       className="w-[207px] px-4 py-2 border rounded-full text-gray-600 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500"
                       ></input>
