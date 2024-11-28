@@ -10,6 +10,8 @@ export default function CompanyOwnership()
     
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         updateFormData('ownership', { [e.target.name]: e.target.value });
+        
+        
     };
     
     return (
@@ -34,7 +36,7 @@ export default function CompanyOwnership()
                 name="userName"
                 variant="outlined"
                 margin="normal"
-                value={formData.ownership.userName}
+                value={formData.ownership.email}
                 onChange={handleChange}
                 sx={{width:'22%',borderRadius: '50px','& .MuiOutlinedInput-root': { borderRadius: '50px'},}}
             />
@@ -44,7 +46,7 @@ export default function CompanyOwnership()
                 name="userName"
                 variant="outlined"
                 margin="normal"
-                value={formData.ownership.userName}
+                value={formData.ownership.phoneNo}
                 onChange={handleChange}
                 sx={{width:'22%',borderRadius: '50px','& .MuiOutlinedInput-root': { borderRadius: '50px'},}}
             />
