@@ -21,9 +21,11 @@ export interface CompanyAttachmentsData {
 }
 
 export interface CompanyOwnershipData {
+    email: string;
     userName: string;
     userType: string;
     userID: string
+    phoneNo:number
 }
 
 

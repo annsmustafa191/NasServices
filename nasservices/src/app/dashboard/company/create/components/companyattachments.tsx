@@ -92,11 +92,11 @@ export default function CompanyAttachments() {
             <TextField
                     label=" Name"
                     fullWidth
-                    value={attachmentDetails.reminderName}
+                    value={attachmentDetails.name}
                     onChange={(e) =>
                         setAttachmentDetails((prev) => ({
                             ...prev,
-                            reminderName: e.target.value,
+                            name: e.target.value,
                         }))
                     }
                     sx={{ mb: 2 ,width:'22%',  borderRadius: '50px','& .MuiOutlinedInput-root': { borderRadius: '50px'}, }}
@@ -104,11 +104,11 @@ export default function CompanyAttachments() {
                    <TextField
                     label="Type"
                     fullWidth
-                    value={attachmentDetails.reminderName}
+                    value={attachmentDetails.type}
                     onChange={(e) =>
                         setAttachmentDetails((prev) => ({
                             ...prev,
-                            reminderName: e.target.value,
+                            type: e.target.value,
                         }))
                     }
                     sx={{ mb: 2 ,width:'22%',  borderRadius: '50px','& .MuiOutlinedInput-root': { borderRadius: '50px'}, }}
