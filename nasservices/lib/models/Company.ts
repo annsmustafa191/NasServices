@@ -21,25 +21,43 @@ interface AssetSchema {
 }
 
 interface EmployeeSchema {
-  firstName: string;
-  lastName: string;
-  fatherName: string;
-  email: string;
-  password: string;
-  nationality: string;
-  dob: string;
-  gender: string;
-  contractType: string;
-  contractLimit: string;
-  role: string;
-  occupationIqama: string;
-  workBackground: DocumentSchema[];
-  attachment: DocumentSchema[];
-  iqamaNumber: string;
-  idNumber: string;
-  profession: string;
-  educationInfo: string;
-  salary: string;
+  userInfo: {
+    firstName: string;
+    lastName: string;
+    email: string;
+    password: string;
+  };
+  personalInfo: {
+    nationality: string;
+    address: string;
+    religion: string;
+    maritalStatus: string;
+    birthDate: string;
+    startOfContract: string;
+    endOfContract: string;
+    gender: string;
+    contractType: string;
+  };
+  professionalInfo: {
+    role: string;
+    occupationIqama: string;
+    profession: string;
+    designation: string;
+    workBackground: DocumentSchema[];
+  }[];
+  salaryPackage: {
+    effectiveOn: string;
+    basicSalary: string;
+    currency: string;
+  };
+  attachments: {
+    name: string;
+    type: string;
+    expiry: string;
+    document: string;
+    reminderName: string;
+    dateTime: string;
+  }[];
   createdAt: Date;
   updatedAt: Date;
 }
@@ -92,29 +110,59 @@ const AssetSchema = new Schema<AssetSchema>({
   updatedAt: { type: Date, default: Date.now },
 });
 
-const EmployeeSchema = new Schema<EmployeeSchema>({
-  firstName: { type: String, required: false },
+const UserInfoSchema = new Schema({
+  firstName: { type: String, required: true },
   lastName: { type: String, required: false },
-  fatherName: { type: String, required: false },
-  email: { type: String, required: false },
-  password: { type: String, required: false },
+  email: { type: String, required: true },
+  password: { type: String, required: true },
+});
+
+const PersonalInfoSchema = new Schema({
   nationality: { type: String, required: false },
-  dob: { type: String, required: false },
+  address: { type: String, required: false },
+  religion: { type: String, required: false },
+  maritalStatus: { type: String, required: false },
+  birthDate: { type: Date, required: false },
+  startOfContract: { type: Date, required: false },
+  endOfContract: { type: Date, required: false },
   gender: { type: String, required: false },
   contractType: { type: String, required: false },
-  contractLimit: { type: String, required: false },
-  role: { type: String, required: false },
+});
+
+const ProfessionalInfoSchema = new Schema({
+  role: { type: String, required: true },
   occupationIqama: { type: String, required: false },
-  workBackground: [DocumentSchema],
-  attachment: [DocumentSchema],
-  iqamaNumber: { type: String, required: false },
-  idNumber: { type: String, required: false },
   profession: { type: String, required: false },
-  educationInfo: { type: String, required: false },
-  salary: { type: String, required: false },
+  designation: { type: String, required: false },
+  workBackground: [{ type: DocumentSchema,  required: true }], // Assuming this is a list of strings, modify if necessary.
+});
+
+const SalaryPackageSchema = new Schema({
+  effectiveOn: { type: Date, required: false },
+  basicSalary: { type: Number, required: false },
+  currency: { type: String, required: false },
+});
+
+const AttachmentSchema = new Schema({
+  name: { type: String, required: false },
+  type: { type: String, required: true },
+  expiry: { type: Date, required: true },
+  document: { type: String, required: true },
+  reminderName: { type: String, required: true },
+  dateTime: { type: Date, required: true },
+});
+
+const EmployeeSchema = new Schema({
+  userInfo: { type: UserInfoSchema, required: true },
+  personalInfo: { type: PersonalInfoSchema, required: false },
+  professionalInfo: { type: [ProfessionalInfoSchema], required: false },
+  salaryPackage: { type: SalaryPackageSchema, required: false },
+  attachments: { type: [AttachmentSchema], required: false },
   createdAt: { type: Date, default: Date.now },
   updatedAt: { type: Date, default: Date.now },
 });
+
+
 
 const OwnersSchema = new Schema<OwnersSchema>({
   userType: { type: String, required: false },
