@@ -8,7 +8,7 @@ import { formatResponse } from '@utils/responseFormatter';
 export async function POST(req: Request) {
   await dbConnect();
 
-  try {
+  try {    
     const employeeData = await req.json();
     const newEmployee = new Employee(employeeData);
     await newEmployee.save();
