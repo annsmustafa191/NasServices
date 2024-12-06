@@ -3,9 +3,13 @@ import Footer from "../footer/footer";
 import React, { useState } from "react";
 import Header from "../header/header";
 import Body from "./body";
+import { t } from "../../../utils/localization";
+import { useLanguage } from "@/context/LanguageContext";
 
 const homePage = () => {
   const [currentLang, setCurrentLang] = useState("en");
+
+  const { language, setLanguage } = useLanguage();
 
   return (
     <div>
@@ -36,10 +40,10 @@ const homePage = () => {
     </p>
     <div className="flex justify-center lg:justify-start gap-4">
       <button className="px-6 py-3 bg-white text-customGrayText text-sm sm:text-base lg:text-lg font-medium rounded-md">
-        {currentLang === "en" ? "See how it works" : "شاهد كيف يعمل"}
+        {t("Seehowitworks", language as "en" | "ar")}
       </button>
       <button className="px-6 py-3 border border-white text-white text-sm sm:text-base lg:text-lg font-medium rounded-md">
-        {currentLang === "en" ? "Request A Call" : "طلب مكالمة"}
+        { t("RequestACall" , language as "en" | "ar") }
       </button>
     </div>
   </div>

@@ -2,3 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Default styles for LTR (English) */
+html, body {
+    font-family: Arial, sans-serif;
+    direction: ltr;
+    text-align: left;
+  }
+  
+  /* Styles for RTL (Arabic) */
+  .rtl {
+    direction: rtl;
+    text-align: right;
+  }

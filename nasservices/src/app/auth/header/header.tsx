@@ -1,7 +1,11 @@
+"use client"
 import Link from 'next/link';
+import { t } from "../../../utils/localization";
+import { useLanguage } from "@/context/LanguageContext";
 
 export default function Header()
 {
+    const { language, setLanguage } = useLanguage();
     return(
         <div className="w-full h-[72px] flex flex-row justify-between items-center border-b border-[#666666]">
 
@@ -11,7 +15,7 @@ export default function Header()
                     <path d="M16 7H3.83L9.42 1.41L8 0L0 8L8 16L9.41 14.59L3.83 9H16V7Z" fill="#666666" />
                 </svg>
                 <Link href="/">
-                    <span>Back</span>
+                    <span>{ t( "back" , language as "en" | "ar" ) } </span>
                 </Link>
             </div>
 

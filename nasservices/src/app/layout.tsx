@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 
 import "./globals.css";
+import { LanguageProvider } from "@/context/LanguageContext";
 
 export const metadata: Metadata = {
   title: "NasServices Next App",
@@ -12,7 +13,9 @@ export default function RootLayout({children,}: Readonly<{children: React.ReactN
   return (
     <html lang="en">
       <body>
+      <LanguageProvider>
         {children}
+      </LanguageProvider>
       </body>
     </html>
   );
