@@ -6,7 +6,7 @@ import Company from '@lib/models/Company';
 import { formatResponse } from '@utils/responseFormatter';
 import { verifyToken } from '@utils/verifyToken';
 
-export async function GET(req: Request, context: { params: { userId: string } }) {
+export async function GET(req: Request, context: any) {
   await dbConnect();
 
   const { userId } = await context.params;
