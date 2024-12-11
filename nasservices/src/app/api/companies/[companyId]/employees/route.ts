@@ -4,10 +4,10 @@ import Company from '@lib/models/Company';
 import { verifyToken } from '@utils/verifyToken';
 import { formatResponse } from '@utils/responseFormatter';
 
-export async function POST(req: Request, { params }: { params: { companyId: string } }) {
+export async function POST(req: Request, context: any){
   await dbConnect();
 
-  const { companyId } = params;
+  const { companyId } = context.params;
   const authHeader = req.headers.get('Authorization');
 
   if (!authHeader) {
@@ -53,10 +53,10 @@ export async function POST(req: Request, { params }: { params: { companyId: stri
   }
 }
 
-export async function GET(req: Request, { params }: { params: { companyId: string } }) {
+export async function GET(req: Request, context: any) {
     await dbConnect();
   
-    const { companyId } = await params;
+    const { companyId } = await context.params;
     const authHeader = req.headers.get('Authorization');
   
     if (!authHeader) {

@@ -9,7 +9,7 @@ import mongoose from 'mongoose';
 
 
 // Named export for the PUT method
-export async function PUT(req: Request, context: { params: { userId: string } }) {
+export async function PUT(req: Request, context: any) {
   await dbConnect();
 
   // Use `await` when accessing `params` to adhere to Next.js 13 requirements
