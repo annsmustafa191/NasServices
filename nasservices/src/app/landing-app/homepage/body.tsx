@@ -1,17 +1,21 @@
 "use client";
 import { useState } from "react";
+import { t } from "../../../utils/localization";
+import { useLanguage } from "@/context/LanguageContext";
 
 const Body = () => {
-  const [currentLang, setCurrentLang] = useState("en");
+  const [currentLang, setCurrentLang] = useState("");
+  const { language, setLanguage } = useLanguage();
+ 
 
   return (
     <div className="bg-white px-4 sm:px-6 lg:px-12 py-12">
       {/* Partners Section */}
       <div className="flex justify-center mb-6">
         <img
-          src="/home/Partners.png"
-          alt="Partners"
-          className="w-full max-w-[780px] h-auto"
+          src={currentLang === "ar" ? "/home/arabic_partners.png" : "/home/Partners.png"}
+          alt={currentLang === "ar" ? "شركاء" : "Partners"}
+          className="w-full max-w-[980px] h-auto"
         />
       </div>
 
@@ -20,36 +24,34 @@ const Body = () => {
         {/* Left Side */}
         <div className="max-w-lg space-y-4 mb-8 lg:mb-0 text-center lg:text-left">
           <p className="text-2xl sm:text-3xl font-semibold">
-            {currentLang === "en"
-              ? "Handle Your Employees Requests in a Simpler Way"
-              : "إدارة طلبات موظفيك بطريقة أسهل"}
+             {t("HandleYourEmployeesRequestsInASimplerWay",language as "en" |"ar")} 
           </p>
           <p className="text-base sm:text-lg text-[#90A3B4]">
-            {currentLang === "en"
-              ? "You can accept, reject the requests from your employees including various request types!"
-              : "يمكنك قبول أو رفض الطلبات من موظفيك بما في ذلك أنواع الطلبات المختلفة!"}
+          {t("Youcanaccept,rejecttherequestsfromyouremployeesincludingvariousrequesttypes!",language as "en" |"ar")} 
+             
           </p>
-          <div className="space-y-2 text-[#90A3B4]">
-            {[
-              { text: "Employee Request & Approvals", ar: "طلبات الموظفين والموافقات" },
-              { text: "Employees Geolocation", ar: "موقع الموظفين" },
-              { text: "Employees Attendance", ar: "حضور الموظفين" },
-              { text: "Payroll Management", ar: "إدارة الرواتب" },
-            ].map((item, index) => (
-              <div key={index} className="flex items-center justify-center lg:justify-start space-x-2">
-                <img
-                  src="/home/feather_check-circle.png"
-                  alt="Check Circle"
-                  className="w-5 h-5"
-                />
-                <p>{currentLang === "en" ? item.text : item.ar}</p>
-              </div>
-            ))}
-          </div>
+        <div className="space-y-2 text-[#90A3B4]">
+         {[
+           "EmployeeRequest&Approvals",
+           "EmployeesGeolocation",
+           "EmployeesAttendance",
+           "PayrollManagement",
+          ].map((key, index) => (
+        <div key={index} className="flex items-center justify-center lg:justify-start space-x-2">
+            <img
+            src="/home/feather_check-circle.png"
+             alt="Check Circle"
+             className="w-5 h-5"
+             />
+             <p>{t(key, language as "en" | "ar")}</p>
+             </div>
+             ))}
+        </div>
+
           <div className="mt-4 text-[#2D9596] font-semibold">
-            {currentLang === "en"
-              ? "Learn about Request Management"
-              : "تعرف على إدارة الطلبات"}
+          {t("LearnaboutRequestManagement", language as "en" | "ar")}
+              
+              
           </div>
         </div>
 

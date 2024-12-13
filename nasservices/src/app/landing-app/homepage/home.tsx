@@ -20,13 +20,13 @@ const homePage = () => {
   {/* Left Side */}
   <div className="space-y-6 max-w-full lg:max-w-xl text-center lg:text-left mt-6 sm:mt-0 px-4">
     <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white leading-tight">
-      <span>{currentLang === "en" ? "We help you" : "نساعدك"}</span>
+      <span>{t("Wehelpyou", language as "en" | "ar")} </span>
       <br />
       <span>
-        {currentLang === "en" ? "grow your business" : "تنمية عملك"}
+      {t("growyourbusiness", language as "en" | "ar")}
       </span>
       <br />
-      <span>{currentLang === "en" ? "faster" : "بسرعة"}</span>
+      <span>{t("faster", language as "en" | "ar")}</span>
     </h1>
     <img
       src="/home/faster.png"
@@ -34,9 +34,7 @@ const homePage = () => {
       className="mx-auto lg:mx-0 w-24 sm:w-32 lg:w-48"
     />
     <p className="text-sm sm:text-base lg:text-lg text-white leading-relaxed">
-      {currentLang === "en"
-        ? "HR Lite is a software built to help companies manage their systems more easily."
-        : "NasHR هو برنامج إدارة الموارد البشرية الذي يشمل الحضور والرواتب وأكثر من ذلك بكثير."}
+       {t("HR", language as "en" | "ar")}  
     </p>
     <div className="flex justify-center lg:justify-start gap-4">
       <button className="px-6 py-3 bg-white text-customGrayText text-sm sm:text-base lg:text-lg font-medium rounded-md">
@@ -68,40 +66,36 @@ const homePage = () => {
         <div className="bg-[rgba(45,149,150,0.12)] text-customGrayText px-6 py-12">
           <div className="text-center mb-6">
             <h2 className="text-2xl sm:text-3xl font-semibold">
-              {currentLang === "en" ? "Features" : "الميزات"}
+            { t("Features", language as "en" | "ar") } 
             </h2>
             <p className="text-sm sm:text-base leading-6 text-[#2D9596] max-w-xl mx-auto">
-              {currentLang === "en"
-                ? "Ditch manual tasks! Our HRMS software simplifies workflows, reduces errors, and saves time. Focus on your team’s success while automation handles the routine."
-                : "تخلص من المهام اليدوية! برنامج إدارة الموارد البشرية لدينا يبسط سير العمل، يقلل الأخطاء، ويوفر الوقت. ركز على نجاح فريقك بينما يتولى الأتمتة المهام الروتينية."}
+            { t("Ditch", language as "en" | "ar") } 
+              
             </p>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {[
-              {
-                icon: "/home/features-attend.png",
-                title: "Attendance",
-                text: "Monitor check-ins, absences, and leave with ease. Simplify management and get a clear overview in real time.",
-                ar: "الحضور",
-              },
-              {
-                icon: "/home/features-req.png",
-                title: "Requests & Approvals",
-                text: "Easily track and manage requests and approvals. Simplify workflows and ensure timely decisions with our intuitive module.",
-                ar: "الطلبات والموافقات",
-              },
-              {
-                icon: "/home/features-pay.png",
-                title: "Payroll",
-                text: "Automate payroll processing, manage salaries, and ensure accuracy with ease.",
-                ar: "الرواتب",
-              },
-              {
-                icon: "/home/features-asset.png",
-                title: "Assets Management",
-                text: "Track and manage assets effortlessly. Simplify inventory and ensure accurate records with ease.",
-                ar: "إدارة الأصول",
-              },
+             {
+              icon: "/home/features-attend.png",
+              title: t("Attendance", language as "en" | "ar"),
+              text: t("card1", language as "en" | "ar"),
+            },
+            
+            {
+              icon: "/home/features-req.png",
+              title: t("RequestsApprovals", language as "en" | "ar"),
+              text: t("card2", language as "en" | "ar"),
+            },
+            {
+              icon: "/home/features-pay.png",
+              title: t("Payroll", language as "en" | "ar"),
+              text: t("card3", language as "en" | "ar"),
+            },
+            {
+              icon: "/home/features-asset.png",
+              title: t("AssetsManagement", language as "en" | "ar"),
+              text: t("card4", language as "en" | "ar"),
+            },
             ].map((feature, index) => (
               <div
                 key={index}
@@ -113,7 +107,7 @@ const homePage = () => {
                   className="mx-auto w-12 h-12"
                 />
                 <h3 className="text-lg font-semibold">
-                  {currentLang === "en" ? feature.title : feature.ar}
+                  
                 </h3>
                 <p className="text-sm sm:text-base">
                   {currentLang === "en" ? feature.text : "card description"}
@@ -126,24 +120,24 @@ const homePage = () => {
         {/* Our Products Section */}
         <div className="bg-white py-12">
           <div className="text-center text-2xl sm:text-3xl font-bold mb-8">
-            Our Products
+            {t("OurProducts", language as "en" | "ar")}
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {[
               {
                 img: "/home/nashr-logo.png",
                 name: "Nas-HR",
-                desc: "A Human Resource Management System web and mobile applications.",
+                desc: t("HRM", language as "en"|"ar")
               },
               {
                 img: "/home/maker4U.png",
                 name: "Maker 4 U",
-                desc: "All-in-one solution for creating magnetic promotional products and much more!",
+                desc: t("All", language as "en"|"ar"),
               },
               {
                 img: "/home/n-c0llect.png",
                 name: "N-Collect",
-                desc: "A Cash Collection App built to help businesses.",
+                desc: t("Cash", language as "en"|"ar"),
               },
             ].map((product, index) => (
               <div

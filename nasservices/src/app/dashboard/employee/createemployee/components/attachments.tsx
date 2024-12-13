@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { t } from "../../../../../utils/localization";
+import { useLanguage } from "@/context/LanguageContext";
 interface EmployeeAttachments {
   name?: string;
   type?: string;
@@ -10,6 +12,8 @@ interface EmployeeAttachments {
 }
 const EmployeeAttachments = () => {
   const [EmployeeAttachments, setEmployeeAttachments] = useState<EmployeeAttachments>({});
+  const [currentLang, setCurrentLang] = useState("en");
+   const { language, setLanguage } = useLanguage();
  
   
   const [formErrors, setFormErrors] = useState<Partial<EmployeeAttachments>>({});
@@ -50,7 +54,7 @@ const EmployeeAttachments = () => {
         <div className="flex flex-row">
         <div className="flex flex-col ml-[-400px]">
             <div className="text-[#444658] ml-[10px]">
-                Name <span className="text-red-500">*</span>
+            {t("Name",language as "en" |"ar")} <span className="text-red-500">*</span>
             </div>
             <div className=" flex relative">
                      <input
@@ -71,7 +75,7 @@ const EmployeeAttachments = () => {
            </div>
            <div className="flex flex-col ml-[30px]">
             <div className="text-[#444658] ml-[10px]">
-                Type <span className="text-red-500">*</span>
+            {t("Type",language as "en" |"ar")}  <span className="text-red-500">*</span>
             </div>
             <div className="flex relative">
                      <input
@@ -92,7 +96,7 @@ const EmployeeAttachments = () => {
            </div>
            <div className="flex flex-col ml-[30px]">
             <div className="text-[#444658]  ml-[10px]">
-                Expiry <span className="text-red-500">*</span>
+            {t("Expiry",language as "en" |"ar")}   <span className="text-red-500">*</span>
             </div>
             <div className="flex relative">
                      <input
@@ -116,7 +120,7 @@ const EmployeeAttachments = () => {
         <div className="flex flex-col ml-[-400px]">
             <div className="text-[#444658] ml-[10px]">
             <label htmlFor="file-upload" className="text-[#444658] size-[16px] mt-[18px] mb-[8px]">
-                      Document<span className="text-red-500">*</span>
+            {t("Document",language as "en" |"ar")} <span className="text-red-500">*</span>
                     </label>
                       <div className="mt-[14px] w-[280px] px-4 py-2 border rounded-full text-gray-600 placeholder-gray-400 focus:[#444658]">
                            <label
@@ -135,7 +139,7 @@ const EmployeeAttachments = () => {
            </div>
            <div className="flex flex-col ml-[30px]">
             <div className="text-[#444658] ml-[10px]">
-                Reminder Name <span className="text-red-500">*</span>
+            {t("ReminderName",language as "en" |"ar")}  <span className="text-red-500">*</span>
             </div>
             <div className="flex relative">
                      <input
@@ -156,7 +160,7 @@ const EmployeeAttachments = () => {
            </div>
            <div className="flex flex-col ml-[30px]">
             <div className="text-[#444658]  ml-[10px]">
-                Select Date & Time <span className="text-red-500">*</span>
+            {t("SelectDate&Time",language as "en" |"ar")}  <span className="text-red-500">*</span>
             </div>
             <div className="flex relative">
                      <input

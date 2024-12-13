@@ -1,4 +1,11 @@
+"use client";
+import { useState } from "react";
+import { t } from "../../../../utils/localization";
+import { useLanguage } from "@/context/LanguageContext";
 export default function EmployeesNotification(props : any) {
+    const [currentLang, setCurrentLang] = useState("en");
+
+    const { language, setLanguage } = useLanguage();
     return (
         <>
             <div className="p-4 rounded-2xl shadow-xl">
@@ -21,7 +28,7 @@ export default function EmployeesNotification(props : any) {
                             </div>
                             <div>
                                 <p>
-                                    Employees’ Notifications
+                                   {t("Employees’ Notifications",language as "en"| "ar")} 
                                 </p>
                             </div>
                             <div>
@@ -32,7 +39,7 @@ export default function EmployeesNotification(props : any) {
                         </div>
                         <div>
                             <button type="button" className="font-medium rounded-full text-sm px-5 py-2.5 text-center inline-flex items-center shadow-md">
-                                Filters
+                            {t("Filters",language as "en"| "ar")} 
                                 <svg width="12.000000" height="8.000000" viewBox="0 0 12 8" fill="none" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
                                     <desc>
                                         Created with Pixso.
@@ -48,34 +55,34 @@ export default function EmployeesNotification(props : any) {
                         <table className="min-w-full">
                             <tbody className="divide-y divide-gray-200">
                                 <tr>
-                                    <td className="px-4 py-2"><button type="button" className="bg-[#D9ECEC] ml-[4px] text-[#2D9596] text-xs font-medium me-2 px-2.5 py-0.5 rounded-full">Renewal</button></td>
+                                    <td className="px-4 py-2"><button type="button" className="bg-[#D9ECEC] ml-[4px] text-[#2D9596] text-xs font-medium me-2 px-2.5 py-0.5 rounded-full">{t("Renewal",language as "en"| "ar")}</button></td>
                                     <td className="px-4 py-2 text-[#444658]">Arqum Satti</td>
-                                    <td className="px-4 py-2 text-[#444658]">Passport Expiry</td>
-                                    <td className="px-4 py-2 text-[#444658]">15 Days Left</td>
+                                    <td className="px-4 py-2 text-[#444658]">{t("PassportExpiry",language as "en"| "ar")}</td>
+                                    <td className="px-4 py-2 text-[#444658]">15 {t("DaysLeft",language as "en"| "ar")}</td>
                                 </tr>
                                 <tr>
-                                    <td className="px-4 py-2"><button type="button" className="bg-[#D9ECEC] ml-[4px] text-[#2D9596] text-xs font-medium me-2 px-2.5 py-0.5 rounded-full">Renewal</button></td>
+                                    <td className="px-4 py-2"><button type="button" className="bg-[#D9ECEC] ml-[4px] text-[#2D9596] text-xs font-medium me-2 px-2.5 py-0.5 rounded-full">{t("Renewal",language as "en"| "ar")}</button></td>
                                     <td className="px-4 py-2 text-[#444658]">Hamza Akram</td>
-                                    <td className="px-4 py-2 text-[#444658]">Visa Expiry</td>
-                                    <td className="px-4 py-2 text-[#444658]">10 Days Left</td>
+                                    <td className="px-4 py-2 text-[#444658]">{t("VisaExpiry",language as "en"| "ar")}</td>
+                                    <td className="px-4 py-2 text-[#444658]">10 {t("DaysLeft",language as "en"| "ar")}</td>
                                 </tr>
                                 <tr>
-                                    <td className="px-4 py-2 text-[#444658]"><button type="button" className="bg-[#D9ECEC] ml-[4px] text-[#2D9596] text-xs font-medium me-2 px-2.5 py-0.5 rounded-full">Renewal</button></td>
+                                    <td className="px-4 py-2 text-[#444658]"><button type="button" className="bg-[#D9ECEC] ml-[4px] text-[#2D9596] text-xs font-medium me-2 px-2.5 py-0.5 rounded-full">{t("Renewal",language as "en"| "ar")}</button></td>
                                     <td className="px-4 py-2 text-[#444658]">Suleman Khan</td>
-                                    <td className="px-4 py-2 text-[#444658]">Insurance Expiry</td>
-                                    <td className="px-4 py-2 text-[#444658]">15 Days Left</td>
+                                    <td className="px-4 py-2 text-[#444658]">{t("InsuranceExpiry",language as "en"| "ar")}</td>
+                                    <td className="px-4 py-2 text-[#444658]">15 {t("DaysLeft",language as "en"| "ar")}</td>
                                 </tr>
                                 <tr>
-                                    <td className="px-4 py-2 text-[#444658]"><button type="button" className="bg-[#D9ECEC] ml-[4px] text-[#2D9596] text-xs font-medium me-2 px-2.5 py-0.5 rounded-full">Renewal</button></td>
+                                    <td className="px-4 py-2 text-[#444658]"><button type="button" className="bg-[#D9ECEC] ml-[4px] text-[#2D9596] text-xs font-medium me-2 px-2.5 py-0.5 rounded-full">{t("Renewal",language as "en"| "ar")}</button></td>
                                     <td className="px-4 py-2 text-[#444658]">Shoaib Sardar</td>
-                                    <td className="px-4 py-2 text-[#444658]">Iqama Expiry</td>
-                                    <td className="px-4 py-2 text-[#444658]">4 Days Left</td>
+                                    <td className="px-4 py-2 text-[#444658]">{t("IqamaExpiry",language as "en"| "ar")}</td>
+                                    <td className="px-4 py-2 text-[#444658]">4 {t("DaysLeft",language as "en"| "ar")}</td>
                                 </tr>
                                 <tr>
-                                    <td className="px-4 py-2 text-[#444658]"><button type="button" className="bg-[#D9ECEC] ml-[4px] text-[#2D9596] text-xs font-medium me-2 px-2.5 py-0.5 rounded-full">Renewal</button></td>
+                                    <td className="px-4 py-2 text-[#444658]"><button type="button" className="bg-[#D9ECEC] ml-[4px] text-[#2D9596] text-xs font-medium me-2 px-2.5 py-0.5 rounded-full">{t("Renewal",language as "en"| "ar")}</button></td>
                                     <td className="px-4 py-2 text-[#444658]">Ammad</td>
-                                    <td className="px-4 py-2 text-[#444658]">Loan Expiry</td>
-                                    <td className="px-4 py-2 text-[#444658]">9 Days Left</td>
+                                    <td className="px-4 py-2 text-[#444658]">{t("LoanExpiry",language as "en"| "ar")}</td>
+                                    <td className="px-4 py-2 text-[#444658]">9 {t("DaysLeft",language as "en"| "ar")}</td>
                                 </tr>
                                 
                             </tbody>

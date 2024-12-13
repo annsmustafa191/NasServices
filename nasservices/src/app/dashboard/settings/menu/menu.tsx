@@ -1,15 +1,19 @@
 
 "use client";
 import React, { useState } from "react";
+import { t } from "../../../../utils/localization";
+import { useLanguage } from "@/context/LanguageContext";
 
 export default function Menu() {
- 
+
+ const [currentLang, setCurrentLang] = useState("en");
+ const { language, setLanguage } = useLanguage();
   const [selectedCard, setSelectedCard] = useState("User");
 
   const renderContent = () => {
     switch (selectedCard) {
       case "User":
-        return <div>User Content</div>;
+        return <div>{t("User",language as "en" |"ar")}  {t("Content",language as "en" |"ar")}</div>;
       case "Notification":
         return <div className="flex flex-row gap-3">Notification:  <div className="container">
         <label className="switch">
@@ -24,9 +28,9 @@ export default function Menu() {
         <div>Arabic</div> 
         </div>;
       case "Subscription":
-        return <div>Subscription Content</div>;
+        return <div>{t("Subscription",language as "en" |"ar")}  {t("Content",language as "en" |"ar")}</div>;
       case "Company":
-        return <div>Company  Content</div>;
+        return <div>{t("Company",language as "en" |"ar")}{t("Content",language as "en" |"ar")} </div>;
       default:
         return <div>Default Content</div>;
     }
@@ -36,7 +40,7 @@ export default function Menu() {
     <div>
       <div className="mt-10 flex flex-row justify-between items-center">
         <div className="text-[#444658] ml-[30px] font-medium text-lg">
-          Settings
+        {t("Settings",language as "en" |"ar")}
         </div>
         <button
           className="rounded-2xl h-[40px] mr-[20px] w-[100px] px-2 text-white"
@@ -44,17 +48,17 @@ export default function Menu() {
             background: "linear-gradient(90deg, #EE1D52 0%, #980C2F 100%)",
           }}
         >
-          Logout
+        {t("Logout",language as "en" |"ar")}  
         </button>
       </div>
 
-      <div className="flex flex-row">
+      <div className="flex flex-row ">
         
         <button
           onClick={() => setSelectedCard("User")}
           className={`p-4 rounded-2xl shadow-x ${
             selectedCard === "User" ? "bg-[#444658]" : "bg-[#ffffff]"
-          } w-[90%] md:w-[140px] h-[100px] ml-[20px] mt-[20px]`}
+          } w-[90%] md:w-[140px] h-[100px] ml-[20px] mt-[20px] `}
         >
           <div className="flex flex-col items-center">
             <img src="/settings/user.png" width={40} height={40} className={`${selectedCard === "User" ? "filter-white" : ""}`} />
@@ -63,7 +67,7 @@ export default function Menu() {
                 selectedCard === "User" ? "text-[#ffffff]" : "text-[#444658]"
               }`}
             >
-              User
+              {t("User",language as "en" |"ar")} 
             </div>
           </div>
         </button>
@@ -85,7 +89,7 @@ export default function Menu() {
                   : "text-[#444658]"
               }`}
             >
-              Notification
+              {t("Notification",language as "en" |"ar")} 
             </div>
           </div>
         </button>
@@ -105,7 +109,7 @@ export default function Menu() {
                 selectedCard === "Language" ? "text-[#ffffff]" : "text-[#444658]"
               }`}
             >
-              Language
+             {t("Language",language as "en" |"ar")}  
             </div>
           </div>
         </button>
@@ -127,7 +131,7 @@ export default function Menu() {
                   : "text-[#444658]"
               }`}
             >
-              Subscription
+             {t("Subscription",language as "en" |"ar")} 
             </div>
           </div>
         </button>
@@ -147,7 +151,7 @@ export default function Menu() {
                 selectedCard === "Company" ? "text-[#ffffff]" : "text-[#444658]"
               }`}
             >
-              Company
+              {t("Company",language as "en" |"ar")}
             </div>
           </div>
         </button>
@@ -155,7 +159,7 @@ export default function Menu() {
 
      
       <div className="text-[#444658] mt-8 mb-2 ml-5">
-        {selectedCard} Details
+      {t(selectedCard, language as "en" | "ar")} {t("DETAILS", language as "en" | "ar")}
       </div>
       <div className="border-b-2 w-[99%] ml-3"></div>
 

@@ -1,8 +1,14 @@
 // components/companyinfo.tsx
+"use client";
+import { useState } from "react";
+import { t } from "../../../../../utils/localization";
+import { useLanguage } from "@/context/LanguageContext";
 import { Button, Box, TextField, Typography, colors } from '@mui/material';
 import { useFormContext } from '../context/formcontext';
 
 export default function CompanyInfo() {
+    const [currentLang, setCurrentLang] = useState("");
+    const { language, setLanguage } = useLanguage();
     const { formData, updateFormData } = useFormContext();
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -19,15 +25,13 @@ export default function CompanyInfo() {
     return (
         <Box sx={{ p: 3, bgcolor: 'background.paper', borderRadius: 2 }}>
             <Box sx={{color:'#444658',fontSize:"21px",fontWeight:'600',marginLeft:'-410px',marginTop:'-150px',marginBottom:'90px'}}>
-            Register new company
+            {t("Registernewcompany", language as "en" |"ar")} 
         
             </Box>
-            <Typography sx={{marginLeft:'-400px'}}>
-                Company Name *
-            </Typography>
+            
             <TextField            
                 fullWidth
-                label="Company Name"
+                label = {t("CompanyName", language as "en" |"ar")}
                 name="name"
                 variant="outlined"
                 margin="normal"
@@ -38,7 +42,7 @@ export default function CompanyInfo() {
             />
            <TextField
                 fullWidth
-                label="Company Registration Number"
+                label= {t("CommercialRegistrationNo*", language as "en" |"ar")}
                 name="commercialLicenseNumber"
                 variant="outlined"
                 margin="normal"
@@ -50,7 +54,7 @@ export default function CompanyInfo() {
                sx={{display: 'flex',alignItems: 'center',gap: 4,}}>
     <TextField
         fullWidth
-        label="Country / City"
+        label={t("Country/City", language as "en" |"ar")}
         name="country"
         variant="outlined"
         margin="normal"
@@ -63,7 +67,7 @@ export default function CompanyInfo() {
     />
     <TextField
         fullWidth
-        label="Company Address"
+        label={t("CompanyAddress", language as "en" |"ar")}
         name="address"
         variant="outlined"
         margin="normal"
@@ -76,7 +80,7 @@ export default function CompanyInfo() {
     />
     <TextField
         fullWidth
-        label="Company Phone Number"
+        label={t("CompanyPhoneNumber", language as "en" |"ar")}
         name="phoneNumber"
         variant="outlined"
         margin="normal"
@@ -87,7 +91,7 @@ export default function CompanyInfo() {
 </Box>
 <TextField
                 fullWidth
-                label="Company Registration Number"
+                label={t("CompanyRegistrationNumber", language as "en" |"ar")}
                 name="commercialLicenseNumber"
                 variant="outlined"
                 margin="normal"
@@ -97,7 +101,7 @@ export default function CompanyInfo() {
                 sx={{ width: '40%',marginLeft:'-400px', borderRadius: '50px', '& .MuiOutlinedInput-root': { borderRadius: '50px'},}}/>
             <TextField
                 fullWidth
-                label="Company Email"
+                label={t("CompanyEmail", language as "en" |"ar")}
                 name="email"
                 variant="outlined"
                 margin="normal"

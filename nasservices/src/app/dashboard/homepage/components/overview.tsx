@@ -1,5 +1,12 @@
+"use client";
+import { useState } from "react";
+import { t } from "../../../../utils/localization";
+import { useLanguage } from "@/context/LanguageContext";
 export default function Overview(props : any)
 {
+  const [currentLang, setCurrentLang] = useState("en");
+
+  const { language, setLanguage } = useLanguage();
     return(
         <>
             <div className="p-4  rounded-2xl shadow-xl bg-[#FFFFFF]">
@@ -13,12 +20,12 @@ export default function Overview(props : any)
                  </svg>
                 </div>
                  <div className="mr-[340px] mt-[10px]"> 
-                    <p> Overview </p>
+                    <p> {t("Overview",language as "en" | "ar")}</p>
                  </div>
             </div>
             <div>
                 <button type="button" className="font-medium rounded-full text-sm px-5 py-2.5 text-center inline-flex items-center shadow-md">
-                       Filters
+                {t("Filters",language as "en" | "ar")}
                  <svg width="12.000000" height="8.000000" viewBox="0 0 12 8" fill="none" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
                     <desc>
                       Created with Pixso.

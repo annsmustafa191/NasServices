@@ -1,9 +1,15 @@
+"use client";
+import { useState } from "react";
+import { t } from "../../../../../utils/localization";
+import { useLanguage } from "@/context/LanguageContext";
 import { Button, TextField, Box } from "@mui/material";
 import { useFormContext } from "../context/formcontext";
-import { useState } from "react";
+
 
 export default function CompanyOwnership() {
   const { formData, updateFormData } = useFormContext();
+  const [currentLang, setCurrentLang] = useState("");
+  const { language, setLanguage } = useLanguage();
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     updateFormData("ownership", { [e.target.name]: e.target.value });
@@ -21,7 +27,7 @@ export default function CompanyOwnership() {
           marginBottom: "90px",
         }}
       >
-        Register new company
+        {t("Registernewcompany", language as "en" |"ar")} 
       </Box>
       <Box
         sx={{
@@ -38,7 +44,7 @@ export default function CompanyOwnership() {
             "& .MuiOutlinedInput-root": { borderRadius: "50px" },
           }}
           fullWidth
-          label="Name"
+          label={t("Name", language as "en" |"ar")} 
           name="userName"
           variant="outlined"
           margin="normal"
@@ -68,7 +74,7 @@ export default function CompanyOwnership() {
       </Box>
       <TextField
         fullWidth
-        label="Ownership Type"
+        label={t("OwnershipType", language as "en" |"ar")}
         name="userType"
         variant="outlined"
         margin="normal"

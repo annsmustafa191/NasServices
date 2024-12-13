@@ -1,8 +1,14 @@
+"use client";
+import { useState } from "react";
+import { t } from "../../../../../utils/localization";
+import { useLanguage } from "@/context/LanguageContext";
 import { Box, Button, List, ListItem, IconButton, TextField, Typography } from '@mui/material';
 import { useFormContext } from '../context/formcontext';
-import { ChangeEvent, useState, useEffect } from 'react';
+import { ChangeEvent,  useEffect } from 'react';
 
 export default function CompanyAttachments() {
+    const [currentLang, setCurrentLang] = useState("");
+    const { language, setLanguage } = useLanguage();
     const { formData, updateFormData } = useFormContext();
     const [attachmentDetails, setAttachmentDetails] = useState({
         id: '', // Unique identifier
@@ -85,12 +91,12 @@ export default function CompanyAttachments() {
     return (
         <Box>
              <Box sx={{color:'#444658',fontSize:"21px",fontWeight:'600',marginLeft:'-390px',marginTop:'-110px',marginBottom:'90px'}}>
-            Register new company
+             {t("Registernewcompany", language as "en" |"ar")} 
             </Box>
           <Box sx={{ mt: 2, }}>
             <Box sx={{display:'flex',flexDirection:'row',marginLeft:'-380px',gap:'40px'}}>
             <TextField
-                    label=" Name"
+                    label={t("Name", language as "en" |"ar")} 
                     fullWidth
                     value={attachmentDetails.name}
                     onChange={(e) =>
@@ -102,7 +108,7 @@ export default function CompanyAttachments() {
                     sx={{ mb: 2 ,width:'22%',  borderRadius: '50px','& .MuiOutlinedInput-root': { borderRadius: '50px'}, }}
                 />
                    <TextField
-                    label="Type"
+                    label= {t("Type", language as "en" |"ar")} 
                     fullWidth
                     value={attachmentDetails.type}
                     onChange={(e) =>
@@ -114,7 +120,7 @@ export default function CompanyAttachments() {
                     sx={{ mb: 2 ,width:'22%',  borderRadius: '50px','& .MuiOutlinedInput-root': { borderRadius: '50px'}, }}
                 />
                 <TextField
-                    label="Expiry Date"
+                    label= {t("ExpiryDate", language as "en" |"ar")} 
                     type="date"
                     fullWidth
                     InputLabelProps={{ shrink: true }}
@@ -146,7 +152,7 @@ export default function CompanyAttachments() {
             
            
                 <TextField
-                    label="Reminder Name"
+                    label= {t("ReminderName", language as "en" |"ar")} 
                     fullWidth
                     value={attachmentDetails.reminderName}
                     onChange={(e) =>

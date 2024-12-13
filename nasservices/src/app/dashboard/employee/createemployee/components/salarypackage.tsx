@@ -1,5 +1,7 @@
 import shadows from "@mui/material/styles/shadows";
 import { useState } from "react";
+import { t } from "../../../../../utils/localization";
+import { useLanguage } from "@/context/LanguageContext";
 
 interface SalaryPackage {
    effectiveOn?: string;
@@ -10,6 +12,8 @@ interface SalaryPackage {
  }
  const SalaryPackageComponent = () => {
    const [SalaryPackage, setSalaryPackage] = useState<SalaryPackage>({});
+   const [currentLang, setCurrentLang] = useState("en");
+   const { language, setLanguage } = useLanguage();
   
    
    const [formErrors, setFormErrors] = useState<Partial<SalaryPackage>>({});
@@ -50,8 +54,8 @@ interface SalaryPackage {
          <p className="text-[#444658] size-17 ml-[50px] mt-[-80px] font-bold  "> AR</p>
          <div className="flex flex-col w-[440px] mt-[-50px] ml-[140px]">
             <p className=" text-[#444658] size-5 font-semibold w-48 "> Ali Rana</p>
-            <p className="text-[#616161] size-4 font-medium w-80 mt-1">Customer Success Manager </p>
-            <p className=" text-[#616161] size-4 font-medium w-80 mt-2"> IT Solutions</p>
+            <p className="text-[#616161] size-4 font-medium w-80 mt-1">{t("CustomerSuccessManager",language as "en" |"ar")}  </p>
+            <p className=" text-[#616161] size-4 font-medium w-80 mt-2"> {t("ITSolutions",language as "en" |"ar")}</p>
          </div>
          <div className="mt-[-68px] ml-[440px]">
             <img src="/employee/edit.png" width={13} height={13}></img>
@@ -59,7 +63,7 @@ interface SalaryPackage {
         </div>
        <div className="flex flex-col mt-[-10px] ml-[470px]">
        <div className="text-[#444658] w-[200px] mt-6 ml-[-405px]"  >
-               Effective on <span className="text-red-500">*</span>
+       {t("Effectiveon",language as "en" |"ar")}<span className="text-red-500">*</span>
             </div>
             <div className="flex mt-3 ml-[-405px] relative">
                      <input
@@ -80,7 +84,7 @@ interface SalaryPackage {
             </div>
            <div className="flex flex-row mt-[-12px]">
            <div className="text-[#444658] w-[200px] mt-6 ml-[-405px]"  >
-               Basic Salary <span className="text-red-500">*</span>
+           {t("BasicSalary",language as "en" |"ar")} <span className="text-red-500">*</span>
             </div>
             <div className="flex mt-16 ml-[-205px] relative">
                      <input
@@ -99,7 +103,7 @@ interface SalaryPackage {
             )}
             </div>
             <div className="text-[#444658] w-[200px] mt-6 ml-[40px]"  >
-               Currency <span className="text-red-500">*</span>
+            {t("Currency",language as "en" |"ar")}  <span className="text-red-500">*</span>
             </div>
             <div className="flex mt-16 ml-[-200px] relative">
                      <input

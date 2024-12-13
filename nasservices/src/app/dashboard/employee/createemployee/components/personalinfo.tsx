@@ -1,9 +1,12 @@
 import React, { useState } from "react";
 import { useFormContext } from "../context/formcontext";
+import { t } from "../../../../../utils/localization";
+import { useLanguage } from "@/context/LanguageContext";
 
 const PersonalInfoComponent = () => {
   const { formData, updateFormData } = useFormContext();
-
+  const [currentLang, setCurrentLang] = useState("en");
+  const { language, setLanguage } = useLanguage();
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     updateFormData("userInfo", { [e.target.name]: e.target.value });
   };
@@ -12,7 +15,7 @@ const PersonalInfoComponent = () => {
       {/* Nationality and Address */}
       <div className="flex flex-row">
         <div className="flex flex-col ml-[-400px]">
-          <div className="text-[#444658] size-[16px]">Nationality*</div>
+          <div className="text-[#444658] size-[16px]"> {t("Nationality",language as "en" |"ar")} </div>
           <div className="flex mt-[14px] ml-[-6px] relative">
             <input
               type="text"
@@ -26,7 +29,7 @@ const PersonalInfoComponent = () => {
         </div>
 
         <div className="flex flex-col ml-[290px]">
-          <div className="text-[#444658] size-[16px]">Address*</div>
+          <div className="text-[#444658] size-[16px]">{t("Address",language as "en" |"ar")}</div>
           <div className="flex mt-[14px] relative">
             <input
               type="text"
@@ -44,7 +47,7 @@ const PersonalInfoComponent = () => {
       <div className="flex flex-row mt-6">
         {/* Religion Field */}
         <div className="flex flex-col ml-[-400px]">
-          <div className="text-[#444658] size-[16px]">Religion*</div>
+          <div className="text-[#444658] size-[16px]">{t("Religion",language as "en" |"ar")}</div>
           <div className="flex mt-[14px] relative gap-5">
             <input
               type="text"
@@ -60,7 +63,7 @@ const PersonalInfoComponent = () => {
         {/* Marital Status Field */}
         <div className="flex flex-col ml-[285px]">
           <div className="text-[#444658] size-[16px] w-[120px]">
-            Marital Status *
+          {t("MaritalStatus*",language as "en" |"ar")} 
           </div>
           <div className="flex mt-[14px] relative gap-5">
             <input
@@ -80,7 +83,7 @@ const PersonalInfoComponent = () => {
         {/* Birth Date Field */}
         <div className="flex flex-col ml-[-400px]">
           <div className="text-[#444658] size-[16px] w-[120px]">
-            Birth Date*
+          {t("BirthDate*",language as "en" |"ar")}   
           </div>
           <div className="flex mt-[14px] relative gap-5">
             <input
@@ -96,7 +99,7 @@ const PersonalInfoComponent = () => {
         {/* Start of Contract Field */}
         <div className="flex flex-col ml-[285px]">
           <div className="text-[#444658] size-[16px] w-[150px]">
-            Start Of Contract *
+          {t("StartOfContract*",language as "en" |"ar")}  
           </div>
           <div className="flex mt-[14px] relative gap-5">
             <input
@@ -112,7 +115,7 @@ const PersonalInfoComponent = () => {
         {/* End of Contract Field */}
         <div className="flex flex-col ml-3">
           <div className="text-[#444658] size-[16px] w-[150px]">
-            End Of Contract *
+          {t("EndOfContract*",language as "en" |"ar")} 
           </div>
           <div className="flex mt-[14px] relative gap-5">
             <input
@@ -130,7 +133,7 @@ const PersonalInfoComponent = () => {
       <div className="flex flex-row mt-6">
         <div className="flex flex-col ml-[-400px]">
           <label className="text-sm font-semibold text-gray-700">
-            Gender <span className="text-[#444658]">*</span>
+          {t("Gender",language as "en" |"ar")}  <span className="text-[#444658]">*</span>
           </label>
           <div className="flex items-center space-x-4 mt-2">
             <label className="flex items-center space-x-2">
@@ -140,7 +143,7 @@ const PersonalInfoComponent = () => {
                 value="male"
                 className="w-5 h-5 text-blue-500 border-gray-300 focus:ring-blue-500 "
               />
-              <span className="text-gray-800">Male</span>
+              <span className="text-gray-800">{t("Male",language as "en" |"ar")}</span>
             </label>
             <label className="flex items-center space-x-2">
               <input
@@ -149,7 +152,7 @@ const PersonalInfoComponent = () => {
                 value="female"
                 className="w-5 h-5 text-blue-500 border-gray-300 focus:ring-blue-500"
               />
-              <span className="text-gray-800">Female</span>
+              <span className="text-gray-800">{t("Female",language as "en" |"ar")}</span>
             </label>
           </div>
         </div>
@@ -157,7 +160,7 @@ const PersonalInfoComponent = () => {
         {/* Contract Type */}
         <div className="flex flex-col ml-[425px]">
           <label className="text-sm font-semibold text-gray-700">
-            Contract Type <span className="text-red-500">*</span>
+          {t("ContractType",language as "en" |"ar")}  <span className="text-red-500">*</span>
           </label>
           <div className="flex items-center space-x-4 mt-2">
             <label className="flex items-center space-x-2">
@@ -167,7 +170,7 @@ const PersonalInfoComponent = () => {
                 value="limited"
                 className="w-5 h-5 text-blue-500 border-gray-300 focus:ring-blue-500"
               />
-              <span className="text-gray-800">Limited</span>
+              <span className="text-gray-800">{t("Limited",language as "en" |"ar")}</span>
             </label>
             <label className="flex items-center space-x-2">
               <input
@@ -176,7 +179,7 @@ const PersonalInfoComponent = () => {
                 value="unlimited"
                 className="w-5 h-5 text-blue-500 border-gray-300 focus:ring-blue-500 "
               />
-              <span className="text-gray-800">Unlimited</span>
+              <span className="text-gray-800">{t("Unlimited",language as "en" |"ar")}</span>
             </label>
           </div>
         </div>

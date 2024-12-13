@@ -5,11 +5,17 @@ import EmployeesNotification from './components/employeesnotification';
 import CompanyNotification from './components/companynotification';
 import CompanyAssets from './components/companyassets';
 import Overview from './components/overview';
+import { t } from "../../../utils/localization";
+import { useLanguage } from "@/context/LanguageContext";
 
 import { useEffect, useState } from 'react';
 import Cookies from 'js-cookie';
 
 export default function Homepage() {
+
+    const [currentLang, setCurrentLang] = useState("en");
+
+    const { language, setLanguage } = useLanguage();
 
     const [data, setData] = useState(null);
 
@@ -60,7 +66,7 @@ export default function Homepage() {
             <div className="grid grid-cols-2 grid-rows-1 gap-4 p-4">
                 <div className="w-[326px] h-[110px]">
 
-                    <h3 className="text-sm font-normal pb-[13px] text-[#515151]">Registered Companies</h3>
+                    <h3 className="text-sm font-normal pb-[13px] text-[#515151]">{t("Register",language as "en"|"ar")}</h3>
 
                     <div className="flex gap-2">
 
@@ -78,7 +84,7 @@ export default function Homepage() {
                                 <p>Heading</p>
                             </div>
                             <div className='font-normal text-[11px] text-white'>
-                                See details
+                               {t("seedetails",language as "en"| "ar")}
                             </div>
                         </div>
 
@@ -96,7 +102,7 @@ export default function Homepage() {
                                 <p>Heading</p>
                             </div>
                             <div className='font-normal text-[11px] text-[#444658]'>
-                                See details
+                            {t("seedetails",language as "en"| "ar")}
                             </div>
                         </div>
                     </div>
@@ -106,19 +112,19 @@ export default function Homepage() {
                     <div className="w-[447px] h-[96px] flex gap-7">
 
                         <div className="flex flex-col gap-3">
-                            <p className="text-sm font-normal text-[#515151]">Total Assets</p>
+                            <p className="text-sm font-normal text-[#515151]">{t("TotalAssets",language as "en" |"ar")}</p>
                             <h2 className="text-4xl font-semibold text-[#2F2F2F]">12</h2>
                             <p className="text-[12px] font-normal text-[#878482]">NasTecSol</p>
                         </div>
 
                         <div className="flex flex-col gap-3">
-                            <p className="text-sm font-normal text-[#515151]">Total Employees</p>
+                            <p className="text-sm font-normal text-[#515151]">{t("TotalEmployees",language as "en" |"ar")}</p>
                             <h2 className="text-4xl font-semibold text-[#2F2F2F]">402</h2>
                             <p className="text-[12px] font-normal text-[#878482]">NasTecSol</p>
                         </div>
 
                         <div className="flex flex-col gap-3">
-                            <p className="text-sm font-normal text-[#515151]">Total Employee Salary</p>
+                            <p className="text-sm font-normal text-[#515151]">{t("TotalEmployeeSalary",language as "en" |"ar")}</p>
                             <h2 className="text-4xl font-semibold text-[#2F2F2F]">SAR 528,976</h2>
                             <p className="text-[12px] font-normal text-[#878482]">July, 2024</p>
                         </div>

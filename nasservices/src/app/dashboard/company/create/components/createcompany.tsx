@@ -1,6 +1,8 @@
 "use client"
 
 // components/StepperForm.js
+import { t } from "../../../../../utils/localization";
+import { useLanguage } from "@/context/LanguageContext";
 import { useState } from 'react';
 import { Box, Button, Stepper, Step, StepLabel, Typography } from '@mui/material';
 
@@ -15,6 +17,8 @@ const steps = ['Company Info', 'Attachments', 'Ownership'];
 
 export default function CreateCompanySteper() {
   const [activeStep, setActiveStep] = useState(0);
+  const [currentLang, setCurrentLang] = useState("en");
+  const { language, setLanguage } = useLanguage();
 
   const { submitForm, resetFormData } = useFormContext();
 
@@ -77,12 +81,14 @@ export default function CreateCompanySteper() {
                 onClick={handleBack}
                 sx={{ marginLeft:'140px',border:'1px solid',borderRadius:'12px',color:'#444658',background:'#ffffff'}}
                >
-                Back
+               {t("Back",language as "en" |"ar")} 
               </Button>
               
               <Button onClick={handleNext}
               sx={{ border:'1px solid',borderRadius:'12px',background:'#444658',color:'white',marginLeft:'-40px!importnart'}}>
-                {activeStep === steps.length - 1 ? 'Finish' : 'Next'}
+          
+          {activeStep === steps.length - 1 ? t("Finish",language as "en"|"ar") : t("Next", language as "en"|"ar")}
+
               </Button>
             </Box>
           </>

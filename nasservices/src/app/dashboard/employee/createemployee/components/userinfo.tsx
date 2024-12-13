@@ -1,9 +1,12 @@
 import { useState } from "react";
 import { useFormContext } from "../context/formcontext";
+import { t } from "../../../../../utils/localization";
+import { useLanguage } from "@/context/LanguageContext";
 
 export default function UserInfo() {
   const { formData, updateFormData } = useFormContext();
-
+  const [currentLang, setCurrentLang] = useState("en");
+  const { language, setLanguage } = useLanguage();
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     updateFormData("userInfo", { [e.target.name]: e.target.value });
   };
@@ -73,13 +76,13 @@ export default function UserInfo() {
       <div className="flex flex-row">
         <div className="flex flex-col ml-[-400px]">
           <div className="text-[#444658] size-[16px] w-60">
-            Name <span className="text-red-500">*</span>
+          {t("Name", language as "en" |"ar")}  <span className="text-red-500">*</span>
           </div>
           <div className="flex mt-[14px] ml-[-6px] gap-5">
             <div>
               <input
                 type="text"
-                placeholder="First name"
+                placeholder= {t("Firstname", language as "en" |"ar")}
                 name="firstName"
                 value={formData.userInfo.firstName}
                 onChange={handleChange}
@@ -99,7 +102,7 @@ export default function UserInfo() {
             <div>
               <input
                 type="text"
-                placeholder="Last name"
+                placeholder={t("Lastname", language as "en" |"ar")}
                 name="lastName"
                 value={formData.userInfo.lastName}
                 onChange={handleChange}
@@ -121,7 +124,7 @@ export default function UserInfo() {
       </div>
       <div className="flex flex-col mt-[99px] ml-[-400px]">
         <div className="text-[#444658] size-[16px] w-60">
-          Email <span className="text-red-500">*</span>
+        {t("Email", language as "en" |"ar")} <span className="text-red-500">*</span>
         </div>
         <div className="flex mt-[14px] ml-[-6px] gap-5">
           <div>
@@ -144,7 +147,7 @@ export default function UserInfo() {
       </div>
       <div className="flex flex-col mt-[199px] ml-[-370px]">
         <div className="text-[#444658] size-[16px] w-60">
-          Password <span className="text-red-500">*</span>
+        {t("Password", language as "en" |"ar")}  <span className="text-red-500">*</span>
         </div>
         <div className="flex mt-[14px] ml-[-6px] gap-5 bg-[#ffffff]">
           <div>
