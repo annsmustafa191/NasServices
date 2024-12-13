@@ -1,5 +1,12 @@
+"use client";
+import { useState } from "react";
+import { t } from "../../../../utils/localization";
+import { useLanguage } from "@/context/LanguageContext";
 export default function CompanyAssets(props : any)
 {
+    const [currentLang, setCurrentLang] = useState("en");
+
+    const { language, setLanguage } = useLanguage();
     return(
         <>
         <div className="p-4 rounded-2xl shadow-x bg-[#ffffff]">
@@ -31,7 +38,7 @@ export default function CompanyAssets(props : any)
                                 </div>
                                 <div>
                                     <p>
-                                        Company Assets’ Notifications
+                                        {t("Company Assets’ Notifications",language as "en"| "ar")}
                                     </p>
                                 </div>
                                 <div>
@@ -42,7 +49,7 @@ export default function CompanyAssets(props : any)
                             </div>
                             <div>
                                 <button type="button" className="font-medium rounded-full text-sm px-5 py-2.5 text-center inline-flex items-center shadow-md">
-                                    Filters
+                                {t("Filters",language as "en"| "ar")}
                                     <svg width="12.000000" height="8.000000" viewBox="0 0 12 8" fill="none" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
                                         <desc>
                                             Created with Pixso.
@@ -71,18 +78,18 @@ export default function CompanyAssets(props : any)
                                 </div>
                                 <div className='w-[138px] h-[68px] flex flex-col justify-center items-center gap-2'>
 
-                                    <h1 className='text-[15px] text-[#444658] font-medium'>Toyota Cammry</h1>
+                                    <h1 className='text-[15px] text-[#444658] font-medium'>{t("ToyotaCammry",language as "en"| "ar")}</h1>
 
                                     <p className='text-[12px] text-[#444658] font-medium'>AFT 090</p>
 
                                     <div className='w-full flex justify-between'>
-                                    <p className='text-[11px] ml-[4px] text-[#444658] font-medium'> Registeration: </p>
-                                    <span className="w-[64px] ml-[15px] text-[#47734D] text-[10px] font-medium px-1.5 py-0.5 rounded-full bg-[#D3F5E1]">Completed</span>
+                                    <p className='text-[11px] ml-[4px] text-[#444658] font-medium'> {t("Registeration:",language as "en"|"ar")} </p>
+                                    <span className="w-[64px] ml-[15px] text-[#47734D] text-[10px] font-medium px-1.5 py-0.5 rounded-full bg-[#D3F5E1]">{t("Completed",language as "en"| "ar")}</span>
                                     </div>
 
                                     <div className='w-full flex justify-between'>
-                                    <p className='text-[11px] ml-[4px] text-[#444658] font-medium'> Token: </p>
-                                    <span className="bg-[#FEF5E7] w-[62px] text-[10px] text-[#FBC948] text-xs   ml-[50px] font-medium me-2 px-2.5 py-0.5 rounded-full">Pending</span>
+                                    <p className='text-[11px] ml-[4px] text-[#444658] font-medium'>{t("Token:",language as "en" | "ar")} </p>
+                                    <span className="bg-[#FEF5E7] w-[62px] text-[10px] text-[#FBC948] text-xs   ml-[50px] font-medium me-2 px-2.5 py-0.5 rounded-full">{t("pending",language as "en"| "ar")}</span>
                                     </div>
                                     
                         
@@ -109,13 +116,13 @@ export default function CompanyAssets(props : any)
                                     <p className='text-[12px] text-[#444658] font-medium'>JMB-290</p>
 
                                     <div className='w-full flex justify-between'>
-                                    <p className='text-[11px] ml-[4px] font-medium text-[#444658]'> Registeration: </p>
-                                    <span className="w-[64px] ml-[15px] text-[#47734D] text-[10px] font-medium px-1.5 py-0.5 rounded-full bg-[#D3F5E1]">Completed</span>
+                                    <p className='text-[11px] ml-[4px] font-medium text-[#444658]'> {t("Registeration:",language as "en"|"ar")} </p>
+                                    <span className="w-[64px] ml-[15px] text-[#47734D] text-[10px] font-medium px-1.5 py-0.5 rounded-full bg-[#D3F5E1]">{t("Completed",language as "en"| "ar")}</span>
                                     </div>
 
                                     <div className='w-full flex justify-between'>
-                                    <p className='text-[11px]  ml-[4px] text-[#444658] font-medium'> Token: </p>
-                                    <span className="bg-[#FEF5E7] w-[62px] text-[10px] text-[#FBC948] text-xs   ml-[50px] font-medium me-2 px-2.5 py-0.5 rounded-full">Pending</span>
+                                    <p className='text-[11px]  ml-[4px] text-[#444658] font-medium'> {t("Token:",language as "en" | "ar")}</p>
+                                    <span className="bg-[#FEF5E7] w-[62px] text-[10px] text-[#FBC948] text-xs   ml-[50px] font-medium me-2 px-2.5 py-0.5 rounded-full">{t("pending",language as "en"| "ar")}</span>
                                     </div>
                                     
                         
@@ -132,18 +139,18 @@ export default function CompanyAssets(props : any)
                                 </div>
                                 <div className='w-[138px] h-[68px] flex flex-col justify-center items-center gap-2'>
 
-                                    <h1 className='text-[15px] text-[#444658] font-medium'>Laptop</h1>
+                                    <h1 className='text-[15px] text-[#444658] font-medium'>{t("Laptop",language as "en"|"ar")}</h1>
 
                                     <p className='text-[12px] text-[#444658] font-medium'>Dell Latitude</p>
 
                                     <div className='w-full flex justify-between'>
-                                    <p className='text-[11px] ml-[4px] font-medium text-[#444658]'> Registeration: </p>
-                                    <span className="w-[64px] ml-[15px] text-[#47734D] text-[10px] font-medium px-1.5 py-0.5 rounded-full bg-[#D3F5E1]">Completed</span>
+                                    <p className='text-[11px] ml-[4px] font-medium text-[#444658]'>{t("Registeration:",language as "en"|"ar")}</p>
+                                    <span className="w-[64px] ml-[15px] text-[#47734D] text-[10px] font-medium px-1.5 py-0.5 rounded-full bg-[#D3F5E1]">{t("Completed",language as "en"| "ar")}</span>
                                     </div>
 
                                     <div className='w-full flex justify-between'>
-                                    <p className='text-[11px]  ml-[4px] text-[#444658] font-medium'> Token: </p>
-                                    <span className="bg-[#FEF5E7] w-[62px] text-[10px] text-[#FBC948] text-xs   ml-[50px] font-medium me-2 px-2.5 py-0.5 rounded-full">Pending</span>
+                                    <p className='text-[11px]  ml-[4px] text-[#444658] font-medium'> {t("Token:",language as "en" | "ar")}</p>
+                                    <span className="bg-[#FEF5E7] w-[62px] text-[10px] text-[#FBC948] text-xs   ml-[50px] font-medium me-2 px-2.5 py-0.5 rounded-full">{t("pending",language as "en"| "ar")}</span>
                                     </div>
                                     
                         
@@ -167,13 +174,13 @@ export default function CompanyAssets(props : any)
                                     <p className='text-[12px] text-[#444658] font-medium'>iphone 13 Pro max</p>
 
                                     <div className='w-full flex justify-between'>
-                                    <p className='text-[11px] ml-[4px] font-medium text-[#444658]'> Registeration: </p>
-                                    <span className=" w-[64px] ml-[15px] text-[#47734D] text-[10px] font-medium px-1.5 py-0.5 rounded-full bg-[#D3F5E1]">Completed</span>
+                                    <p className='text-[11px] ml-[4px] font-medium text-[#444658]'> {t("Registeration:",language as "en"|"ar")}</p>
+                                    <span className=" w-[64px] ml-[15px] text-[#47734D] text-[10px] font-medium px-1.5 py-0.5 rounded-full bg-[#D3F5E1]">{t("Completed",language as "en"| "ar")}</span>
                                     </div>
 
                                     <div className='w-full flex justify-between'>
-                                    <p className='text-[11px]  ml-[4px] text-[#444658] font-medium'> Token: </p>
-                                    <span className="bg-[#FEF5E7] w-[62px] text-[10px] text-[#FBC948] text-xs ml-[50px] font-medium me-2 px-2.5 py-0.5 rounded-full">Pending</span>
+                                    <p className='text-[11px]  ml-[4px] text-[#444658] font-medium'> {t("Token:",language as "en" | "ar")} </p>
+                                    <span className="bg-[#FEF5E7] w-[62px] text-[10px] text-[#FBC948] text-xs ml-[50px] font-medium me-2 px-2.5 py-0.5 rounded-full">{t("pending",language as "en"| "ar")}</span>
                                     </div>
                                     
                         
@@ -183,7 +190,7 @@ export default function CompanyAssets(props : any)
                         </div>
                         ) :  (
                             <div>
-                                No data for company Assets
+                                {t("NodataforcompanyAssets",language as "en" | "ar")}
                             </div>
                         )}
 

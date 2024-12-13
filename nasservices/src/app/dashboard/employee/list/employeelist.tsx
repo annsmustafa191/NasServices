@@ -1,8 +1,14 @@
 "use client";
 import { useEffect, useState } from "react";
 import Cookies from "js-cookie";
+import Link from "next/link";
+import { t } from "../../../../utils/localization";
+import { useLanguage } from "@/context/LanguageContext";
+
 
 export default function EmployeeList() {
+  const [currentLang, setCurrentLang] = useState("en");
+  const { language, setLanguage } = useLanguage();
   const [isOpen, setIsOpen] = useState(false);
   const [view, setView] = useState("Employee");
   const [data, setData] = useState<any[]>([]);
@@ -93,7 +99,10 @@ export default function EmployeeList() {
   };
 
   const tableData = view === "Employee" ? employees : owners;
-  const addButtonLabel = view === "Employee" ? "+ Add New Employee" : "+ Add New User";
+  const addButtonLabel = view === "Employee" 
+  ? t("+AddNewEmployee", language as "en" | "ar") 
+  : t("+AddNewUser", language as "en" | "ar");
+  const targetLink = view === "Employee" ? "/dashboard/employee/createemployee" : "/dashboard/employee/createuser";
 
   return (
     <div className="min-h-screen bg-gray-100 p-4 sm:p-8">
@@ -102,27 +111,28 @@ export default function EmployeeList() {
         <div className="flex flex-col sm:flex-row justify-between items-center mb-4 space-y-4 sm:space-y-0">
           <div className="flex space-x-6">
             <button
-              className={`font-semibold pb-1 ${view === "Employee" ? "text-[#444658] border-b-2 border-[#444658]" : "text-gray-600"
-                }`}
+              className={`font-semibold pb-1 ${view === "Employee" ? "text-[#444658] border-b-2 border-[#444658]" : "text-gray-600"}`}
               onClick={() => handleViewChange("Employee")}
             >
-              Employee
+              {t("Employee", language as "en"| "ar")}
             </button>
             <button
               className={`font-semibold pb-1 ${view === "Owner" ? "text-[#444658] border-b-2 border-[#444658]" : "text-gray-600"
                 }`}
               onClick={() => handleViewChange("Owner")}
             >
-              Owner
+              {t("Owner", language as "en"| "ar")}
             </button>
           </div>
           <div className="flex space-x-4 mt-[-90px!important]">
             <button className="text-[#444658] font-medium px-4 py-2 hover:bg-gray-300 border border-[#444658] rounded-[12px]">
-              Filters
+            {t("Filters", language as "en"| "ar")} 
             </button>
+            <Link href={targetLink}>
             <button className="bg-[#444658] text-white font-medium px-4 py-2 rounded-[17px] w-[240px]">
-              {addButtonLabel}
-            </button>
+               {addButtonLabel}
+               </button>
+            </Link>
           </div>
         </div>
         <div className="overflow-hidden">
@@ -130,23 +140,23 @@ export default function EmployeeList() {
             <thead>
               <tr>
                 <th className="px-2 sm:px-4 py-2 text-left text-[#444658] font-[500] border-b">
-                  {view === "Employee" ? "Emp No." : "User Name"}
+                {t(view === "Employee" ? "EmpNo" : "UserName", language as "en" | "ar")}
                 </th>
                 <th className="px-2 sm:px-4 py-2 text-left text-[#444658] font-[500] border-b">
-                  {view === "Employee" ? "Iqama Number" : "Company"}
+                  { t(view === "Employee" ? "Iqama Number" : "Company",language as "en" | "ar")}
                 </th>
                 <th className="px-2 sm:px-4 py-2 text-left text-[#444658] font-[500] border-b">
-                  {view === "Employee" ? "Employee Name" : "Email"}
+                  {t(view === "Employee" ? "Employee Name" : "Email", language as "en" |"ar")}
                 </th>
                 <th className="px-2 sm:px-4 py-2 text-left text-[#444658] font-[500] border-b">
-                  {view === "Employee" ? "Position" : "Phone No."}
+                  {t(view === "Employee" ? "Position" : "PhoneNo",language as "en" |"ar")}
                 </th>
                 <th className="px-2 sm:px-4 py-2 text-left text-[#444658] font-[500] border-b">
-                  {view === "Employee" ? "Work Location" : "Address"}
+                  {t(view === "Employee" ? "Work Location" : "Address",language as "en" | "ar")}
                 </th>
                 {view === "Employee" && (
                   <th className="px-2 sm:px-4 py-2 text-left text-[#444658] font-[500] border-b">
-                    Department
+                    {t("Department",language as "en"|"ar")}
                   </th>
                 )}
               </tr>

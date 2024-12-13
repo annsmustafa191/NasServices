@@ -1,8 +1,20 @@
 "use client"
 
+
 import Image from 'next/image';
+import { useState } from 'react';
+import { t } from "../../../utils/localization";
+import { useLanguage } from "@/context/LanguageContext";
 
 export default function Dashheader() {
+    const [dropdownOpen, setDropdownOpen] = useState(false);
+    // const [currentLang, setCurrentLang] = useState("en");
+   
+   
+     const [currentLang, setCurrentLang] = useState("en");
+     const { language, setLanguage } = useLanguage();
+   
+     const toggleDropdown = () => setDropdownOpen(!dropdownOpen);
 
     const handleLogout = () => {
         // Clear the authToken cookie
@@ -49,7 +61,7 @@ export default function Dashheader() {
 <feGaussianBlur stdDeviation="2" result="effect2_foregroundBlur_72_3580"/>
 </filter>
 <filter id="filter1_d_72_3580" x="44.3693" y="22.8308" width="10.2038" height="3.47307" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
-<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feFlood floodOpacity="0" result="BackgroundImageFix"/>
 <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
 <feMorphology radius="0.4" operator="dilate" in="SourceAlpha" result="effect1_dropShadow_72_3580"/>
 <feOffset/>
@@ -80,25 +92,38 @@ export default function Dashheader() {
 </svg>
 
             </div>
+            
 
             <div className="pr-8 flex flex-row text-2xl font-bold text-[#444658] gap-3">
+            <div className="relative">
+          <div
+            onClick={toggleDropdown}
+            className="cursor-pointer flex items-center"
+          >
+            <img
+              src="/dash-home/globe.jpg"
+              alt="Translate"
+              className="w-12 h-12 "
+            />
+          </div>
+          {dropdownOpen && (
+            <ul className="absolute right-0 mt-2 bg-white text-black shadow-md rounded-md py-2 w-28 md:w-32 z-50">
+              <li
+                onClick={() => {setLanguage("ar"); setDropdownOpen(false)}}
+                className="px-3 py-2 cursor-pointer hover:bg-gray-200 text-sm md:text-base"
+              >
+                العربية
+              </li>
+              <li
+                onClick={() => {setLanguage("en") ; setDropdownOpen(false)}}
+                className="px-3 py-2 cursor-pointer hover:bg-gray-200 text-sm md:text-base"
+              >
+                English
+              </li>
+            </ul>
+          )}
+        </div>
 
-                <div>
-                    <form className="max-w-md mx-auto">
-                        <label className="mb-2 text-sm font-medium  sr-only dark:text-white">Search</label>
-                        <div className="relative">
-                            <div className="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
-                                <svg className="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
-                                    <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
-                                </svg>
-                            </div>
-                            <input type="search" id="default-search" className="block w-full p-2 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg " placeholder="Search ..." />
-                        </div>
-                    </form>
-                </div>
-
-            
-               
                 <div className="w-[36px] h-[36px] bg-[#E0E6ED] rounded-full flex justify-center items-center">
 
                     <div className="relative inline-flex">
@@ -123,7 +148,7 @@ export default function Dashheader() {
                 </div>
 
                 <button onClick={handleLogout}>
-                    Logout
+                {t("Logout",language as "en" |"ar")} 
                 </button>
 
             </div>

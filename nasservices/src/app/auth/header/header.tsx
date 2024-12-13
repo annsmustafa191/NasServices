@@ -21,7 +21,7 @@ export default function Header()
 
             <div className="pr-8 text-2xl font-bold text-[#444658]">
                 <Link href="/auth/signup">
-                    <p>Create an account</p>
+                    <p>{t("Create",language as "en"| "ar")}</p>
                 </Link>
             </div>  
                       

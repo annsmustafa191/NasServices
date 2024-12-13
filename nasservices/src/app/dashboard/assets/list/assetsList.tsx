@@ -1,12 +1,15 @@
 "use client"
 import { useState } from "react";
 import Link from "next/link";
+import { t } from "../../../../utils/localization";
+import { useLanguage } from "@/context/LanguageContext";
 
 export default function Assets() {
 
     const [isPopupOpen, setIsPopupOpen] = useState(false);
 
-   
+    const [currentLang, setCurrentLang] = useState("en");
+    const { language, setLanguage } = useLanguage();
     const togglePopup = () => setIsPopupOpen(!isPopupOpen);
 
   const assets = [
@@ -39,16 +42,16 @@ export default function Assets() {
       <div className="  w-[1350px]">
       
         <div className="flex justify-between items-center mb-6">
-          <h1 className="text-2xl font-semibold">Assets</h1>
+          <h1 className="text-2xl font-semibold">{t("Assets",language as "en" |"ar")}</h1>
           <div className="flex gap-4">
             <button className="px-4 text-[#444658] py-2 bg-[#ffffff] border rounded-[12px] flex items-center gap-2 shadow-md">
-              Filters
+            {t("Filters",language as "en" |"ar")}
             </button>
             <button
               onClick={togglePopup}
               className="px-4 py-2 bg-[#444658] text-white rounded-[12px] flex items-center gap-2"
             >
-              + Add New Asset
+             {t("+AddNewAsset",language as "en" |"ar")} 
             </button>
           
           </div>
@@ -62,19 +65,19 @@ export default function Assets() {
             </h2>
             <div className="flex justify-center mt-[30px] gap-4">
               <button className="px-3 py-1  bg-[#444658] text-white rounded-lg flex items-center gap-2">
-                📱 Mobile
+                📱{t("Mobile",language as "en" |"ar")} 
               </button>
               <Link href= "/dashboard/assets/created">
               <button className="px-3 py-1  bg-[#444658] text-white rounded-lg flex items-center gap-2">
-                💻 Laptop
+                💻 {t("Laptop",language as "en" |"ar")}  
               </button>
               </Link>
               <button className="px-3 py-1  bg-[#444658] text-white rounded-lg flex items-center gap-2">
-                🚗 Vehicle
+                🚗  {t("Vehicle",language as "en" |"ar")}
               </button>
               <Link href="/dashboard/assets/create">
               <button className="px-3 py-1  bg-[#444658] text-white rounded-lg flex items-center gap-2">
-                ➕ Add
+                ➕ {t("Add",language as "en" |"ar")} 
               </button>
               </Link>
             </div>
@@ -86,11 +89,11 @@ export default function Assets() {
           <thead>
             <tr className=" text-left border-t border-b text-gray-600">
               <th className="p-4">ID</th>
-              <th className="p-4">Name</th>
-              <th className="p-4">Type</th>
-              <th className="p-4">Model</th>
-              <th className="p-4">Insurance Start Date</th>
-              <th className="p-4">Insurance End Date</th>
+              <th className="p-4">{t("Name",language as "en" |"ar")} </th>
+              <th className="p-4">{t("Type",language as "en" |"ar")} </th>
+              <th className="p-4">{t("Model",language as "en" |"ar")} </th>
+              <th className="p-4">{t("InsuranceStartDate",language as "en" |"ar")}</th>
+              <th className="p-4">{t("InsuranceEndDate",language as "en" |"ar")}</th>
             </tr>
           </thead>
           <tbody>

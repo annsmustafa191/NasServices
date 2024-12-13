@@ -10,7 +10,8 @@ import {
   StepLabel,
   Typography,
 } from "@mui/material";
-
+import { t } from "../../../../../utils/localization";
+import { useLanguage } from "@/context/LanguageContext";
 import UserInfo from "./userinfo";
 import PersonalInfo from "./personalinfo";
 import ProfessionalInfo from "./professionalinfo";
@@ -28,6 +29,8 @@ const steps = [
 ];
 
 export default function EmployeeSteper() {
+  const [currentLang, setCurrentLang] = useState("en");
+  const { language, setLanguage } = useLanguage();
   const [activeStep, setActiveStep] = useState(0);
 
   // const { submitForm, resetFormData } = useFormContext();
@@ -111,7 +114,7 @@ export default function EmployeeSteper() {
                   background: "#ffffff",
                 }}
               >
-                Back
+                {t("Back",language as "en" |"ar")} 
               </Button>
 
               <Button
@@ -124,7 +127,7 @@ export default function EmployeeSteper() {
                   marginLeft: "-40px!importnart",
                 }}
               >
-                {activeStep === steps.length - 1 ? "Finish" : "Next"}
+                 {activeStep === steps.length - 1 ? t("Finish",language as "en"|"ar") : t("Next", language as "en"|"ar")}
               </Button>
             </Box>
           </>
